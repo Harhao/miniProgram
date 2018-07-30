@@ -6,6 +6,6 @@
     - Taro版本：v0.0.69
     - Node版本：v8.11.1
     
-- ![猫眼电影运行效果](https://github.com/Harhao/miniProgram/blob/master/demo1.gif?raw=true)
+- ![猫眼电影运行效果](https://github.com/Harhao/miniProgram/blob/master/demo.gif?raw=true)
 
 > 猫眼电影开发待续完善，持续更新中
