@@ -1,0 +1,65 @@
+.selectBar{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  top:86px;
+  left:0;
+  z-index:999;
+  background-color: #fff;
+  .toolBar{
+    display: flex;
+    width: 100%;
+    height: 40Px;
+    flex-direction: row;
+    border-bottom: 1px solid #b0b0b0;
+    .district,.subway{
+      flex: 1;
+      height: 40Px;
+      line-height: 40Px;
+      font-size: 0.75rem;
+      text-align: center;
+    }
+  }
+  .kindContianer{
+    display: flex;
+    width: 100%;
+    height: 250Px;
+    overflow: hidden;
+    flex-direction: row;
+    border-bottom: 1px solid #b0b0b0;
+    background-color: #f5f5f5;
+    .kind{
+      width: 25%;
+      background-color: #fff;
+      .selected{
+        background-color: #f5f5f5;
+        color: #f03d37;
+      }
+      .kindItem{
+        height:44Px;
+        line-height:44Px;
+        font-size:0.65rem;
+        text-align:center;
+      }
+    }
+    .listDetail{
+      flex: 1;
+      overflow: scroll;
+      .addrItem{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 80%;
+        height: 40Px;
+        line-height:40Px;
+        padding:0 25px;
+        margin-left:30px;
+        font-size:0.65rem;
+        .count{
+
+        }
+      }
+    }
+  }
+}
