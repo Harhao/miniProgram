@@ -3,6 +3,7 @@ import {View,Image,ScrollView,Text} from '@tarojs/components'
 import searchPng from "../../assets/images/search.png"
 import ico1Png from "../../assets/images/2D.png"
 import ico2Png from "../../assets/images/3D.png"
+import heart from "../../assets/images/heart.png"
 import "./Toptab.scss"
 export default class Toptab extends Component{
   constructor(props){
@@ -13,8 +14,10 @@ export default class Toptab extends Component{
       navTab:["正在热映","即将上映"],
       onList:null,
       movieIds:null,
+      expectData:[],
       startIndex:0,
-      lastIndex:0
+      lastIndex:0,
+      offset:0
     }
   }
   switchTab(index,e){
@@ -103,10 +106,35 @@ export default class Toptab extends Component{
       }
     })
   }
+  getFutureMovies(){
+    let self = this;
+    let offset = this.state.offset;
+    let expectData = self.state.expectData
+    Taro.request({
+      url:`http://m.maoyan.com/ajax/mostExpected?ci=20&limit=10&offset=${offset}&token=`,
+      method:'GET'
+    }).then(res=>{
+      if(res.statusCode == 200){
+        let data = res.data.coming;
+        offset +=10;
+        data.forEach(value=>{
+          let arr = value["img"].split("w.h");
+          value['img'] = arr[0]+'128.180'+arr[1]
+        })
+        self.setState({
+          expectData:expectData.concat(data),
+          offset:offset
+        });
+      }
+    })
+  }
   componentDidMount(){
-    this.getMoviesOnList()
+    this.getMoviesOnList();
+    this.getFutureMovies();
   }
   render(){
+    let expectData = this.state.expectData;
+    console.log("data is",expectData);
     return (
       <View>
         <View className='top-tab flex-wrp flex-tab' >
@@ -154,7 +182,49 @@ export default class Toptab extends Component{
             })}
           </View>
           <View className="tabItemContent" hidden={this.state.currentNavtab === 1?false:true}>
-              
+              <View className="recent">近期最受期待</View>
+              <ScrollView scroll-x style='height:160Px' className='expect' scrollTop='0' lowerThreshold='10' scrollLeft='0'
+              >
+                {expectData.map(item=>{
+                  return (
+                    <View className="picItem" key={item.id}>
+                      <Image src={heart}  className="bg"></Image>
+                      <Image src={item.img} className="poster"></Image>
+                      <View className='wish'>{item.wish}人想看</View>
+                      <View className='title'>{item.nm}</View>
+                      <View className="time">{item.comingTitle}</View>
+                    </View>
+                  )
+                })}
+              </ScrollView>
+              <View className="line"></View>
+              <View className="movieContainer">
+              {this.state.onList.map((item,index)=>{
+                return (
+                  <View className="dataItem" key={index} onClick={this.navigateDetail.bind(this,'../detail/detail',item)}>
+                    <View className="leftItem">
+                      <Image src={item.img}></Image>
+                    </View>
+                    <View className="rightItem">
+                      <View className="itemContent">
+                        <View className="title">
+                          <Text>{item.nm}</Text>
+                          <View className="icon">
+                            {item.version.split(' ')[0] === "v3d"?<Image src={ico2Png}></Image>:<Image src={ico1Png}></Image>}
+                          </View>
+                        </View>
+                        {item.globalReleased?<View className="comment smallFont">观众评 <Text className="yellow">{item.sc}</Text></View>:<View className="comment smallFont"><Text className="yellow">{item.wish}</Text>人想看</View>}
+                        <View className="person smallFont">主演: {item.star}</View>
+                        <View className="showInfo smallFont">{item.showInfo}</View>
+                      </View>
+                      <View className="operate">
+                        {item.showst === 4?<view className="preBuy">预售</view>:<view className="buyTicket">购票</view>}
+                      </View>
+                    </View>
+                  </View>
+                )
+              })}
+              </View>
           </View>
         </ScrollView>
       </View>
