@@ -9,7 +9,7 @@
 
     - ![猫眼电影运行效果](https://github.com/Harhao/miniProgram/blob/master/demo.gif?raw=true)
 - 安装使用
-    - 1.安装依赖
+    - 1.安装依赖:尽量使用cnpm安装项目依赖，npm安装比较慢，而且容易出现失败现象
     ```
     cnpm install
     ```
