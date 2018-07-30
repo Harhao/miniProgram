@@ -3,8 +3,8 @@
 
 -  开发环境
     - 系统：Window 10
-    - Taro版本：v 0.0.69
-    - Node版本：v 8.11.1
+    - Taro版本：v0.0.69
+    - Node版本：v8.11.1
     
 - ![猫眼电影运行效果](https://github.com/Harhao/miniProgram/blob/master/demo1.gif?raw=true)
 
