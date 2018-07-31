@@ -23,7 +23,7 @@ export default class Detail extends Component {
       dates:[],
       cinemas:[],
       allData:{},
-      scrollLeft:'0'
+      scrollLeft:'0',
     }
   }
   componentWillMount () {
@@ -35,7 +35,8 @@ export default class Detail extends Component {
     this.setState({
       params:{
         title:params.title,
-        id:params.id
+        id:params.id,
+        cityId:params.cityId
       }
     });
   }
@@ -116,7 +117,7 @@ export default class Detail extends Component {
         item:"",
         updateShowDay: true,
         reqId: Date.now(),
-        cityId: 20,
+        cityId: this.state.params.cityId,
       }
     }).then(res=>{
       if(res.statusCode == 200){
@@ -185,7 +186,7 @@ export default class Detail extends Component {
         item:"",
         updateShowDay: true,
         reqId: Date.now(),
-        cityId: 20,
+        cityId: this.state.params.cityId,
       }
     }).then(res=>{
       if(res.statusCode == 200){

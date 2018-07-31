@@ -8,16 +8,18 @@ import "./Toptab.scss"
 export default class Toptab extends Component{
   constructor(props){
     super(...arguments);
+    let data = Taro.getStorageSync("cities");
     this.state = {
       currentNavtab:0,
-      location:"广州",
+      name:data.geoCity.nm,
+      id:data.geoCity.id,
       navTab:["正在热映","即将上映"],
       onList:null,
       movieIds:null,
       expectData:[],
       startIndex:0,
       lastIndex:0,
-      offset:0
+      offset:0,
     }
   }
   switchTab(index,e){
@@ -28,8 +30,8 @@ export default class Toptab extends Component{
   navigate(url){
     Taro.navigateTo({ url: url })
   }
-  navigateDetail(url,item){
-    url = url+`?id=${item.id}&title=${item.nm}`
+  navigateDetail(url,item,cityId){
+    url = url+`?id=${item.id}&title=${item.nm}&cityId=${cityId}`
     Taro.navigateTo({ url: url })
   }
   getMoviesOnList(){
@@ -100,7 +102,7 @@ export default class Toptab extends Component{
         });
         this.setState({
           onList:self.state.onList.concat(res.data.coming),
-          startIndex :startIndex
+          startIndex :startIndex,
         });
       }
     })
@@ -109,8 +111,9 @@ export default class Toptab extends Component{
     let self = this;
     let offset = this.state.offset;
     let expectData = self.state.expectData
+    let ci = self.state.id;
     Taro.request({
-      url:`http://m.maoyan.com/ajax/mostExpected?ci=20&limit=10&offset=${offset}&token=`,
+      url:`http://m.maoyan.com/ajax/mostExpected?ci=${ci}&limit=10&offset=${offset}&token=`,
       method:'GET'
     }).then(res=>{
       if(res.statusCode == 200){
@@ -133,11 +136,12 @@ export default class Toptab extends Component{
   }
   render(){
     let expectData = this.state.expectData;
+    let cityId = this.state.id;
     return (
       <View>
         <View className='top-tab flex-wrp flex-tab' >
             <View className="location" onClick={this.navigate.bind(this,"../position/position")}>
-              {this.state.location}
+              {this.state.name}
               <View className="cityArrow"></View>
             </View>
             {
@@ -155,7 +159,7 @@ export default class Toptab extends Component{
           <View className="tabItemContent" hidden={this.state.currentNavtab === 0?false:true}>
             {this.state.onList.map((item,index)=>{
               return (
-                <View className="dataItem" key={index} onClick={this.navigateDetail.bind(this,'../detail/detail',item)}>
+                <View className="dataItem" key={index} onClick={this.navigateDetail.bind(this,'../detail/detail',item,cityId)}>
                   <View className="leftItem">
                     <Image src={item.img}></Image>
                   </View>
@@ -199,7 +203,7 @@ export default class Toptab extends Component{
               <View className="movieContainer">
               {this.state.onList.map((item,index)=>{
                 return (
-                  <View className="dataItem" key={index} onClick={this.navigateDetail.bind(this,'../detail/detail',item)}>
+                  <View className="dataItem" key={index} onClick={this.navigateDetail.bind(this,'../detail/detail',item,)}>
                     <View className="leftItem">
                       <Image src={item.img}></Image>
                     </View>
