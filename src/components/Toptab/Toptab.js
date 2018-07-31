@@ -40,7 +40,6 @@ export default class Toptab extends Component{
       url:"http://m.maoyan.com/ajax/movieOnInfoList?token=",
       method:"GET",
     }).then(res=>{
-      console.log(res)
       if(res.statusCode == 200){
         Taro.hideLoading();
         res.data.movieList.forEach((value)=>{
@@ -134,7 +133,6 @@ export default class Toptab extends Component{
   }
   render(){
     let expectData = this.state.expectData;
-    console.log("data is",expectData);
     return (
       <View>
         <View className='top-tab flex-wrp flex-tab' >

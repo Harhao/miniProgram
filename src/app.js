@@ -42,14 +42,14 @@ class App extends Component {
     }
   }
 
-  componentDidMount () {}
+  componentDidMount () {
+  }
 
   componentDidShow () {}
 
   componentDidHide () {}
 
   componentCatchError () {}
-
   render () {
     return (
       <Movies />
