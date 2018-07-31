@@ -65,6 +65,7 @@ export default class Position extends Component {
     });
   }
   render () {
+    let letterMap = this.state.cityData.letterMap;
     return (
       <ScrollView className='cityList'
             scrollY
@@ -93,16 +94,19 @@ export default class Position extends Component {
                   <View className="hotItem">重庆</View>
                 </View>
               </View>
-              // <View className="allCity">
-              //   {this.state.letterMap.map(item=>{
-              //     return (
-              //       <View>
-              //         <View className="head"></View>
-              //         <View className="headList"></View>
-              //       </View>
-              //     )
-              //   })}
-              // </View>
+              <View className="allCity">
+                <View className="headContainer">
+                  {
+                    Object.keys(letterMap).map(key=>{
+                      letterMap[key].map(item=>{
+                        return (
+                          <View class="headItem" key={item.id}>{item.nm}</View>
+                        )
+                      })
+                    })
+                  }
+                </View>
+              </View>
               <View className="toolBar">
                 {this.state.list.map(item =>{
                   return (
