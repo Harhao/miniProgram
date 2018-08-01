@@ -69,27 +69,6 @@
       }
     }
   }
-  .toolBar{
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 50px;
-    height: 100vh;
-    z-index:99;
-    top:0;
-    right: 0;
-    background-color: rgba(235,235,235,0.5);
-    .item{
-      font-size:0.65rem;
-      color: #333;
-      padding-right: 5px;
-      text-align: center;
-      white-space:nowrap;
-      margin-right:10px;
-      padding-top:5px;
-    }
-  }
   .headContainer{
       width: 100%;
       height: auto;
@@ -113,9 +92,29 @@
   }
 
 }
+.toolBar{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50px;
+  height: 100vh;
+  z-index:99;
+  top:0;
+  right: 0;
+  background-color: rgba(235,235,235,0.5);
+  .item{
+    font-size:0.65rem;
+    color: #333;
+    padding-right: 5px;
+    text-align: center;
+    white-space:nowrap;
+    margin-right:10px;
+    padding-top:5px;
+  }
+}
 ::-webkit-scrollbar {
- // width: 0;
- // height: 0;
- display: none;
+ width: 0;
+ height: 0;
  color: transparent;
 }

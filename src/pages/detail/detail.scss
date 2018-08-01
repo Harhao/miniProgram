@@ -235,3 +235,8 @@
     border-color: #f03d37 !important;
   }
 }
+::-webkit-scrollbar {
+ width: 0;
+ height: 0;
+ color: transparent;
+}

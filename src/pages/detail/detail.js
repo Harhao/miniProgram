@@ -49,7 +49,6 @@ export default class Detail extends Component {
       url:`http://m.maoyan.com/ajax/filterCinemas?movieId=${this.state.params.id}&day=${this.state.showDate}`
     }).then(res=>{
       if(res.statusCode == 200){
-        console.log("&&& ",res);
         let data = res.data;
         this.setState({
           allData:data
@@ -154,7 +153,6 @@ export default class Detail extends Component {
     }
   }
   selectDate(item,index,e){
-    console.log(e);
     this.setState({
       active:index,
       offset:0,
@@ -209,7 +207,6 @@ export default class Detail extends Component {
     })
   }
   scroll(e){
-    console.log()
     if(e.detail.scrollTop >=185 && this.state.flag){
       let hide = true;
       this.setState({
@@ -226,7 +223,6 @@ export default class Detail extends Component {
     }
   }
   showArea(name,e){
-    console.log(this.state.type)
     e.stopPropagation();
     e.preventDefault();
     if(this.state.hide){
@@ -240,7 +236,6 @@ export default class Detail extends Component {
         type:name
       });
     }
-    console.log(this.state.type);
   }
   render () {
     let itemData = this.state.detailMovie;

@@ -72,62 +72,65 @@ export default class Position extends Component {
   render () {
     let letterMap = this.state.cityData.letterMap?this.state.cityData.letterMap:{};
     return (
-      <ScrollView className='cityList'
-            scrollY
-            scrollWithAnimation
-            scrollTop='0'
-            scrollIntoView ={this.state.viewId}
-            style='height:1000vh;'>
-              <View className="locationContainer" id="pos">
-                <View className="locationCity">定位城市</View>
-                <View className="locationText">
-                  <View className="city">{this.state.cityData.geoCity.nm}</View>
-                </View>
-              </View>
-              <View className="hotContainer" id="hot">
-                <View className="hotCity">热门城市</View>
-                <View className="hotList">
-                  <View className="hotItem">上海</View>
-                  <View className="hotItem">北京</View>
-                  <View className="hotItem">广州</View>
-                  <View className="hotItem">深圳</View>
-                  <View className="hotItem">武汉</View>
-                  <View className="hotItem">天津</View>
-                  <View className="hotItem">西安</View>
-                  <View className="hotItem">南京</View>
-                  <View className="hotItem">杭州</View>
-                  <View className="hotItem">成都</View>
-                  <View className="hotItem">重庆</View>
-                </View>
-              </View>
-                {
-                  Object.keys(letterMap).map(key=>{
-                    return (
-                      <View className="headContainer" id={key}>
-                        <View className="head">
-                          {key}
-                        </View>
-                        {
-                          letterMap[key].map(item=>{
-                            return (
-                              <View className="headItem" key={item.id} onClick={this.selectItem.bind(this,item)}>
-                                {item.nm}
-                              </View>
-                            )
-                          })
-                        }
-                      </View>
-                    )
-                  })
-                }
-              <View className="toolBar">
-                {this.state.list.map(item =>{
-                  return (
-                    <View className="item" key={item.id} onTap={this.setView.bind(this,item)}>{item.name}</View>
-                  )
-                })}
-              </View>
-      </ScrollView>
+      <View>
+          <ScrollView className='cityList'
+                scrollY
+                scrollWithAnimation
+                scrollTop='0'
+                scrollIntoView ={this.state.viewId}
+                style='height:1000vh;'>
+                  <View className="locationContainer" id="pos">
+                    <View className="locationCity">定位城市</View>
+                    <View className="locationText">
+                      <View className="city">{this.state.cityData.geoCity.nm}</View>
+                    </View>
+                  </View>
+                  <View className="hotContainer" id="hot">
+                    <View className="hotCity">热门城市</View>
+                    <View className="hotList">
+                      <View className="hotItem">上海</View>
+                      <View className="hotItem">北京</View>
+                      <View className="hotItem">广州</View>
+                      <View className="hotItem">深圳</View>
+                      <View className="hotItem">武汉</View>
+                      <View className="hotItem">天津</View>
+                      <View className="hotItem">西安</View>
+                      <View className="hotItem">南京</View>
+                      <View className="hotItem">杭州</View>
+                      <View className="hotItem">成都</View>
+                      <View className="hotItem">重庆</View>
+                    </View>
+                  </View>
+                    {
+                      Object.keys(letterMap).map(key=>{
+                        return (
+                          <View className="headContainer" id={key} key={key}>
+                            <View className="head">
+                              {key}
+                            </View>
+                            {
+                              letterMap[key].map(item=>{
+                                return (
+                                  <View className="headItem" key={item.id} onClick={this.selectItem.bind(this,item)}>
+                                    {item.nm}
+                                  </View>
+                                )
+                              })
+                            }
+                          </View>
+                        )
+                      })
+                    }
+
+          </ScrollView>
+          <View className="toolBar">
+            {this.state.list.map(item =>{
+              return (
+                <View className="item" key={item.id} onTap={this.setView.bind(this,item)}>{item.name}</View>
+              )
+            })}
+          </View>
+      </View>
     )
   }
 }

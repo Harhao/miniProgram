@@ -26,7 +26,7 @@ export default class Specialbar extends Component {
             <View className='container'>
               {serviceList.map((item,index) =>{
                 return (
-                  <View className={index == 0?'serviceItem choosen':'serviceItem'}>
+                  <View className={index == 0?'serviceItem choosen':'serviceItem'} key={index}>
                     {item.name}
                   </View>
                 )
@@ -38,7 +38,7 @@ export default class Specialbar extends Component {
             <View className='container'>
             {hallTypeList.map((item,index) =>{
               return (
-                <View className={index == 0?'hallTypeItem choosen':'hallTypeItem'}>
+                <View className={index == 0?'hallTypeItem choosen':'hallTypeItem'} key={index}>
                   {item.name}
                 </View>
               )
