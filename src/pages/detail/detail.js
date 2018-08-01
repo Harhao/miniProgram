@@ -45,8 +45,12 @@ export default class Detail extends Component {
     this.getDetailData();
   }
   getfilterCinemas(){
+    let cityId = this.state.params.cityId;
     Taro.request({
-      url:`http://m.maoyan.com/ajax/filterCinemas?movieId=${this.state.params.id}&day=${this.state.showDate}`
+      url:`http://m.maoyan.com/ajax/filterCinemas?movieId=${this.state.params.id}&day=${this.state.showDate}`,
+      header:{
+        "Cookie":`_lxsdk_cuid=164b6cae2cac8-02b7b032f571b5-39614706-1fa400-164b6cae2cbc8; v=3; iuuid=1A6E888B4A4B29B16FBA1299108DBE9CA19FF6972813B39CA13A8D9705187374; revrev=76338a29; _lx_utm=utm_source%3DBaidu%26utm_medium%3Dorganic; webp=true; __mta=3463951.1532075108184.1533098338076.1533118040602.20; _lxsdk=1A6E888B4A4B29B16FBA1299108DBE9CA19FF6972813B39CA13A8D9705187374; from=canary; selectci=true; ci=${cityId}; _lxsdk_s=164f4f4c9e9-45e-d1b-46%7C%7C46; __mta=3463951.1532075108184.1533118040602.1533118355820.21`
+      }
     }).then(res=>{
       if(res.statusCode == 200){
         let data = res.data;
