@@ -8,14 +8,48 @@
 - 现阶段运行效果
 
     - ![猫眼电影运行效果](https://github.com/Harhao/miniProgram/blob/master/demo1.gif?raw=true)
-- 安装使用
-    - 1.安装依赖:尽量使用cnpm安装项目依赖，npm安装比较慢，而且容易出现失败现象
+- 安装依赖并运行小程序
+    - 1.安装依赖:尽量使用cnpm安装项目依赖，npm安装比较慢，而且容易出现安装失败情况
     ```
-    cnpm install
+     cnpm install
     ```
-    - 2.在微信开发者工具导入dist的目录
-    - 3.在运行过程之中出现
+    - 2.项目的运行需要地理位置定位获取城市id，可以在项目目录下api.zip代码中运行，返回全国所有城市的数据信息，和获取到当前定位的城市信息。如果单纯想拿到静态信息，可以在[cities.json](https://github.com/Harhao/crawEyeCatCities/blob/master/getCity/cities.json)获取到数据
+    ```
+      {
+        "letterMap": {
+           "A": [
+            { "id": 150, "nm": "阿拉善盟", "py": "alashanmeng" },
+            { "id": 151, "nm": "鞍山", "py": "anshan" },
+            { "id": 197, "nm": "安庆", "py": "anqing" },
+            { "id": 238, "nm": "安阳", "py": "anyang" },
+            { "id": 319, "nm": "阿坝", "py": "aba" },
+            { "id": 324, "nm": "安顺", "py": "anshun" },
+            { "id": 359, "nm": "安康", "py": "ankang" },
+            { "id": 400, "nm": "阿勒泰", "py": "aletai" },
+            { "id": 394, "nm": "阿克苏", "py": "akesu" },
+            { "id": 490, "nm": "安吉", "py": "anji" },
+            { "id": 588, "nm": "安丘", "py": "anqiu" },
+            { "id": 699, "nm": "安岳", "py": "anyue" },
+            { "id": 807, "nm": "安平", "py": "anping" },
+            { "id": 873, "nm": "安宁", "py": "anning" },
+            { "id": 844, "nm": "安溪", "py": "anxi" },
+            { "id": 1008, "nm": "安化", "py": "anhua" },
+            { "id": 1126, "nm": "阿勒泰市", "py": "aletaishi" },
+            { "id": 1068, "nm": "安福", "py": "anfu" }
+          ],
+          "B":[{},{},...,{}],
+          ...
+           "Z":[{},{},...,{}]
+        },
+        "geoCity": { "id": 20, "nm": "广州", "py": "guangzhou" }
+     }
+    ```
+    - 3.运行以下打包微信小程序命令，生成dist小程序源码目录,在微信开发者工具导入dist的目录
+    ```
+      npm run dev:weapp
+    ```
+    - 4.在运行过程之中出现
     ```
     module "npm/@tarojs/taro-weapp/index.js" is not defined 把dist/npm/@tarojs拷贝一次重新黏贴一下就可以避免这种情况
     ```
-> 猫眼电影开发待续完善，持续更新中
+> 猫眼电影微信小程序个人中心、电影详细信息、影院搜索待完善开发更新
