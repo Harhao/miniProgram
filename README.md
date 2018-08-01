@@ -2,9 +2,11 @@
 > 猫眼电影是基于Taro框架开发的猫眼电影微信小程序
 
 -  开发环境
-    - 系统：Window 10
-    - Taro版本：v0.0.69
-    - Node版本：v8.11.1
+  ```
+    系统：Window 10
+    Taro版本：v0.0.69
+    Node版本：v8.11.1
+  ```
 - 现阶段运行效果
 
     - ![猫眼电影运行效果](https://github.com/Harhao/miniProgram/blob/master/demo1.gif?raw=true)
