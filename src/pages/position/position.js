@@ -8,6 +8,7 @@ export default class Position extends Component {
   constructor(props){
     super(props);
     this.state = {
+      viewId:"pos",
       cityData:{},
       list:[
         { name: "定位", id: "pos" },
@@ -41,17 +42,9 @@ export default class Position extends Component {
       ]
     }
   }
-  componentWillMount () { }
-
   componentDidMount () {
     this.getData();
   }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
   getData(){
     let data = Taro.getStorageSync("cities");
     Taro.setNavigationBarTitle({
@@ -64,13 +57,26 @@ export default class Position extends Component {
       }
     });
   }
+  selectItem(item){
+    let data = Taro.getStorageSync("cities");
+    data.geoCity = item;
+    Taro.setStorageSync("cities",data);
+    Taro.reLaunch({ url: "../movies/movies" });
+  }
+  setView(item){
+    let id = item.id;
+    this.setState({
+      viewId:id
+    });
+  }
   render () {
-    let letterMap = this.state.cityData.letterMap;
+    let letterMap = this.state.cityData.letterMap?this.state.cityData.letterMap:{};
     return (
       <ScrollView className='cityList'
             scrollY
             scrollWithAnimation
             scrollTop='0'
+            scrollIntoView ={this.state.viewId}
             style='height:1000vh;'>
               <View className="locationContainer" id="pos">
                 <View className="locationCity">定位城市</View>
@@ -94,18 +100,17 @@ export default class Position extends Component {
                   <View className="hotItem">重庆</View>
                 </View>
               </View>
-              <View className="allCity">
                 {
                   Object.keys(letterMap).map(key=>{
                     return (
-                      <View ClassName="headContainer" id={key}>
+                      <View className="headContainer" id={key}>
                         <View className="head">
                           {key}
                         </View>
                         {
                           letterMap[key].map(item=>{
                             return (
-                              <View className="headItem" key={item.id}>
+                              <View className="headItem" key={item.id} onClick={this.selectItem.bind(this,item)}>
                                 {item.nm}
                               </View>
                             )
@@ -115,11 +120,10 @@ export default class Position extends Component {
                     )
                   })
                 }
-              </View>
               <View className="toolBar">
                 {this.state.list.map(item =>{
                   return (
-                    <View className="item" key={item.id}>{item.name}</View>
+                    <View className="item" key={item.id} onTap={this.setView.bind(this,item)}>{item.name}</View>
                   )
                 })}
               </View>

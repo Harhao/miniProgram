@@ -79,8 +79,7 @@
     z-index:99;
     top:0;
     right: 0;
-    background-color: #ebebeb;
-    opacity: 0.95;
+    background-color: rgba(235,235,235,0.5);
     .item{
       font-size:0.65rem;
       color: #333;
@@ -91,6 +90,28 @@
       padding-top:5px;
     }
   }
+  .headContainer{
+      width: 100%;
+      height: auto;
+      color: #333;
+      background-color: #f5f5f5;
+      .head{
+        height: 30Px;
+        line-height: 30Px;
+        padding-left: 40px;
+        font-size: 0.75rem;
+        background-color: #ebebeb;
+      }
+      .headItem{
+        font-size: 0.75rem;
+        margin:0 60px 0 30px;
+        height: 40Px;
+        line-height: 40Px;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #c8c7cc;
+      }
+  }
+
 }
 ::-webkit-scrollbar {
  // width: 0;

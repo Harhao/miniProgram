@@ -14,7 +14,7 @@ export default class Toptab extends Component{
       name:data.geoCity.nm,
       id:data.geoCity.id,
       navTab:["正在热映","即将上映"],
-      onList:null,
+      onList:[],
       movieIds:null,
       expectData:[],
       startIndex:0,
@@ -135,7 +135,7 @@ export default class Toptab extends Component{
     this.getFutureMovies();
   }
   render(){
-    let expectData = this.state.expectData;
+    let expectData = this.state.expectData?this.state.expectData:[];
     let cityId = this.state.id;
     return (
       <View>
