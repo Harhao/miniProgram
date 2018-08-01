@@ -95,17 +95,26 @@ export default class Position extends Component {
                 </View>
               </View>
               <View className="allCity">
-                <View className="headContainer">
-                  {
-                    Object.keys(letterMap).map(key=>{
-                      letterMap[key].map(item=>{
-                        return (
-                          <View class="headItem" key={item.id}>{item.nm}</View>
-                        )
-                      })
-                    })
-                  }
-                </View>
+                {
+                  Object.keys(letterMap).map(key=>{
+                    return (
+                      <View ClassName="headContainer" id={key}>
+                        <View className="head">
+                          {key}
+                        </View>
+                        {
+                          letterMap[key].map(item=>{
+                            return (
+                              <View className="headItem" key={item.id}>
+                                {item.nm}
+                              </View>
+                            )
+                          })
+                        }
+                      </View>
+                    )
+                  })
+                }
               </View>
               <View className="toolBar">
                 {this.state.list.map(item =>{
