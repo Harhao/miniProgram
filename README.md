@@ -50,6 +50,6 @@
     ```
     - 4.在运行dist目录源码可能出现错误信息，之前在Taro开源库中提issue，暂时没有详细错误的原因，可以持续关注Taro官方动态，下面是跳过错误信息进行开发解决方法
     ```
-    module "npm/@tarojs/taro-weapp/index.js" is not defined 把dist/npm/@tarojs拷贝一次重新黏贴一下就可以避免这种情况
+    module "npm/@tarojs/taro-weapp/index.js" is not defined  // 把dist/npm/@tarojs拷贝一次重新黏贴一下就可以避免这种情况
     ```
 > 猫眼电影微信小程序个人中心、电影详细信息、影院搜索待完善开发更新
