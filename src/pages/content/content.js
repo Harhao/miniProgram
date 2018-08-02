@@ -41,7 +41,11 @@ export default class Content extends Component {
         console.log(data);
         let arr = data["img"].split("w.h");
         data["img"] = arr[0]+"128.180"+  arr[1];
-        let showDate = data.rt;
+        for(let index in data.photos){
+          let photo = data.photos[index];
+          let arr = photo.split('w.h');
+          data.photos[index] = arr[0]+'180.140'+arr[1];
+        }
         this.setState({
           detailMovie:data
         });
@@ -58,6 +62,7 @@ export default class Content extends Component {
   }
   render () {
     let itemData = this.state.detailMovie;
+    let photos = itemData.photos;
     return (
       <ScrollView  className="detailContainer"
             scrollY
@@ -90,6 +95,25 @@ export default class Content extends Component {
             <View className="arrow" onClick={this.showContent.bind(this)}>
               <View className={this.state.showContent?'icon change':'icon'}></View>
             </View>
+        </View>
+        <View className="line"></View>
+        <View className="mediaContainer">
+            <View className="title">媒体库</View>
+            <ScrollView scrollX style='height:80Px' className='media' scrollTop='0' lowerThreshold='10' className="mediaPhoto"
+            >
+              <Image src={itemData.videoImg}></Image>
+              {
+                photos.map((item,index) =>{
+                  return (
+                    <Image src={item} key={index}></Image>
+                  );
+                })
+              }
+            </ScrollView>
+          <View className="count">
+            <View className="video"></View>
+            <View className="cinemaPic"></View>
+          </View>
         </View>
         <View className="line"></View>
       </ScrollView>

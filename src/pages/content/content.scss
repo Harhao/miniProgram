@@ -141,4 +141,24 @@
     height: 0.6rem;
     background-color:#f4f4f4;
   }
+
+  .mediaContainer{
+    border-bottom:1px solid #f4f4f4;
+    .title{
+      color: #666;
+      font-size: 0.7rem;
+      padding: 0.4rem 0.8rem;
+      font-weight: 700;
+    }
+    .mediaPhoto{
+      white-space: nowrap;
+      margin-left: 0.8rem;
+      img,image{
+        display: inline-block;
+        width: 140Px;
+        height: 90Px;
+        padding-right: 10px;
+      }
+    }
+  }
 }
