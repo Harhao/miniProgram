@@ -241,6 +241,11 @@ export default class Detail extends Component {
       });
     }
   }
+  navigateContent(url,item){
+    let cityId = this.state.cityId;
+    url = url+`?id=${item.id}&title=${item.nm}&cityId=${cityId}`
+    Taro.navigateTo({ url: url })
+  }
   render () {
     let itemData = this.state.detailMovie;
     let cinemas = this.state.cinemas;
@@ -269,7 +274,7 @@ export default class Detail extends Component {
                 <View className="hours">{itemData.src}/{itemData.dur}分钟</View>
                 <View className="time">{itemData.pubDesc}</View>
               </View>
-              <View className="arrow">
+              <View className="arrow" onClick={this.navigateContent.bind(this,'../content/content',itemData)}>
                 <View className="icon"></View>
               </View>
             </View>

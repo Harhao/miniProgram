@@ -197,7 +197,7 @@ export default class Toptab extends Component{
               >
                 {expectData.map(item=>{
                   return (
-                    <View className="picItem" key={item.id}>
+                    <View className="picItem" key={item.id} onClick={this.navigateDetail.bind(this,'../content/content',item,)}>
                       <Image src={heart}  className="bg"></Image>
                       <Image src={item.img} className="poster"></Image>
                       <View className='wish'>{item.wish}人想看</View>
