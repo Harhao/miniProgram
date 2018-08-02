@@ -211,7 +211,7 @@ export default class Toptab extends Component{
               <View className="movieContainer">
               {this.state.onList.map((item,index)=>{
                 return (
-                  <View className="dataItem" key={index} onClick={this.navigateDetail.bind(this,'../detail/detail',item,)}>
+                  <View className="dataItem" key={index} onClick={this.navigateDetail.bind(this,'../content/content',item,)}>
                     <View className="leftItem">
                       <Image src={item.img}></Image>
                     </View>
