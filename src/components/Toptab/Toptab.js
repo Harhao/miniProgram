@@ -134,6 +134,9 @@ export default class Toptab extends Component{
       }
     })
   }
+  do(){
+    this.getFutureMovies();
+  }
   componentDidMount(){
     this.getMoviesOnList();
     this.getFutureMovies();
@@ -189,7 +192,8 @@ export default class Toptab extends Component{
           </View>
           <View className="tabItemContent" hidden={this.state.currentNavtab === 1?false:true}>
               <View className="recent">近期最受期待</View>
-              <ScrollView scroll-x style='height:160Px' className='expect' scrollTop='0' lowerThreshold='10' scrollLeft='0'
+              <ScrollView scrollX style='height:160Px' className='expect' scrollTop='0' lowerThreshold='10'
+                onScrolltolower={this.do.bind(this)}
               >
                 {expectData.map(item=>{
                   return (

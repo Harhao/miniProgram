@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View} from '@tarojs/components'
 import './position.scss'
 export default class Position extends Component {
   config = {
