@@ -1,5 +1,5 @@
 ### 基于京东凹凸实验室Taro框架的微信小程序--猫眼电影
-> 猫眼电影是基于Taro框架开发的猫眼电影微信小程序
+[![Build Status](https://travis-ci.com/Harhao/miniProgram.svg?branch=master)](https://travis-ci.com/Harhao/miniProgram)
 
 -  开发环境
   ```
@@ -8,8 +8,7 @@
     Node版本：v8.11.1
   ```
 - 现阶段运行效果
-
-    - ![猫眼电影运行效果](https://github.com/Harhao/miniProgram/blob/master/demo1.gif?raw=true)
+- ![猫眼电影运行效果](https://github.com/Harhao/miniProgram/blob/master/demo1.gif?raw=true)
 - 安装依赖并运行小程序
     - 1.安装依赖:尽量使用cnpm安装项目依赖，npm安装比较慢，而且容易出现安装失败情况
     ```
