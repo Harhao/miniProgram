@@ -101,7 +101,10 @@ export default class Content extends Component {
             <View className="title">媒体库</View>
             <ScrollView scrollX style='height:80Px' className='media' scrollTop='0' lowerThreshold='10' className="mediaPhoto"
             >
-              <Image src={itemData.videoImg}></Image>
+              <View className="videoCon">
+                <Image src={itemData.videoImg}></Image>
+                <Image className="playIcon" src={}></Image>
+              </View>
               {
                 photos.map((item,index) =>{
                   return (
