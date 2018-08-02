@@ -9,6 +9,7 @@ export default class Content extends Component {
   constructor(props){
     super(props);
     this.state={
+      showContent:false,
       params:{},
       detailMovie:{},
     }
@@ -49,6 +50,12 @@ export default class Content extends Component {
       console.log(err.message);
     })
   }
+  showContent(){
+    let self = this;
+    this.setState({
+      showContent:!self.state.showContent
+    })
+  }
   render () {
     let itemData = this.state.detailMovie;
     return (
@@ -76,8 +83,15 @@ export default class Content extends Component {
           </View>
         </View>
         <View className="introduce">
-
+            <View className="btn">特惠购票</View>
+            <View className={this.state.showContent?'introduceContent showContent':'introduceContent'}>
+              {itemData.dra}
+            </View>
+            <View className="arrow" onClick={this.showContent.bind(this)}>
+              <View className={this.state.showContent?'icon change':'icon'}></View>
+            </View>
         </View>
+        <View className="line"></View>
       </ScrollView>
     )
   }
