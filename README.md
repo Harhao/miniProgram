@@ -1,5 +1,5 @@
 ### 基于京东凹凸实验室Taro框架的微信小程序--猫眼电影
-> 猫眼电影是基于Taro框架开发的猫眼电影微信小程序
+[![Build Status](https://travis-ci.com/Harhao/miniProgram.svg?branch=master)](https://travis-ci.com/Harhao/miniProgram)
 
 -  开发环境
   ```
