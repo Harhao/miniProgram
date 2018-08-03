@@ -74,7 +74,7 @@ export default class Cinema extends Component {
   }
   getCinemasList(){
     let reqList = this.state.reqList;
-    let id = this.state.cityData;
+    let id = this.state.cityData.id;
     console.log("city id is ",this.state.cityData.id);
     Taro.request({
       method:'GET',
