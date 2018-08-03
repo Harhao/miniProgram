@@ -82,6 +82,21 @@
       margin-top: 5px;
     }
   }
+  .selected{
+    color: #f03d37 !important;
+    .tangle{
+      width: 0;
+      height: 0;
+      border: 4Px solid #f03d37;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-top-color: transparent;
+      display: inline-block;
+      margin-top: -20px;
+      margin-left: 4px;
+
+    }
+  }
 }
 ::-webkit-scrollbar {
  width: 0;

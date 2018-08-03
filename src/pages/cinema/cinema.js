@@ -75,7 +75,7 @@ export default class Cinema extends Component {
         <View className="toolBar">
           {this.state.selectItems.map((item,index)=>{
             return (
-              <View className={this.state.type == item.type:'active selectItem':'selectItem'} key={index} onClick={this.selectItem.bind(this,item)}>
+              <View className={this.state.type == item.type?'selected selectItem':'selectItem'} key={index} onClick={this.selectItem.bind(this,item)}>
                 {item.nm}
                 <View className="tangle"></View>
               </View>
