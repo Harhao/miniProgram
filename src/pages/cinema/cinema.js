@@ -20,7 +20,7 @@ export default class Cinema extends Component {
       selectItems:[{nm:'全城',type:'city'},{nm:'品牌',type:'brand'},{nm:'特色',type:'special'}],
       reqList:{
         offset:'0',
-        day:new Date("yyyy-MM-DD"),
+        day:this.getFormatTime(),
         districtId:'-1',
         lineId:'-1',
         hallType:'-1',
@@ -29,7 +29,6 @@ export default class Cinema extends Component {
         areaId:'-1',
         stationId:'-1',
         reqId:Date.now(),
-        cityId:'',
       }
     }
   }
@@ -52,13 +51,13 @@ export default class Cinema extends Component {
       cityData:cityData.geoCity
     },()=>{
       self.filterCinemasList();
+      self.getCinemasList();
     });
   }
   filterCinemasList(){
     Taro.request({
       url:`http://m.maoyan.com/ajax/filterCinemas?ci=${this.state.cityData.id}`
     }).then(res=>{
-      console.log("&&&&",res);
       if(res.statusCode == 200){
         this.setState({
           allData:res.data
@@ -66,11 +65,23 @@ export default class Cinema extends Component {
       }
     })
   }
+  getFormatTime(){
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() >=10?'-'+date.getMonth():'-0'+date.getMonth();
+    let day = date.getDate() >=10?'-'+datae.getDate():'-0'+date.getDate();
+    return year+month+day;
+  }
   getCinemasList(){
+    let reqList = this.state.reqList;
+    let id = this.state.cityData;
+    console.log("city id is ",this.state.cityData.id);
     Taro.request({
       method:'GET',
-      url:` http://m.maoyan.com/ajax/cinemaList?day=2018-08-03&offset=0&limit=20&districtId=-1&lineId=-1&hallType=-1&brandId=-1&serviceId=-1&areaId=-1&stationId=-1&item=&updateShowDay=true&reqId=1533290240340&cityId=150`
-    }).then(res=>{})
+      url:` http://m.maoyan.com/ajax/cinemaList?day=${reqList.day}&offset=${reqList.offset}&limit=20&districtId=${reqList.districtId}&lineId=${reqList.lineId}&hallType=${reqList.hallType}&brandId=${reqList.brandId}&serviceId=${reqList.serviceId}&areaId=${reqList.areaId}&stationId=${reqList.stationId}&item=&updateShowDay=true&reqId=${reqList.reqId}&cityId=${id}`
+    }).then(res=>{
+      console.log("*****",res);
+    })
   }
   componentDidMount () {
     this.getStorageData();
