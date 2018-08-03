@@ -68,17 +68,18 @@ export default class Cinema extends Component {
   getFormatTime(){
     let date = new Date();
     let year = date.getFullYear();
-    let month = date.getMonth() >=10?'-'+date.getMonth():'-0'+date.getMonth();
+    let month = date.getMonth()+1;
+    month = month >=10?'-'+month:'-0'+month;
     let day = date.getDate() >=10?'-'+datae.getDate():'-0'+date.getDate();
     return year+month+day;
   }
   getCinemasList(){
     let reqList = this.state.reqList;
-    let id = this.state.cityData.id;
+    let Data = this.state.cityData;
     console.log("city id is ",this.state.cityData.id);
     Taro.request({
       method:'GET',
-      url:` http://m.maoyan.com/ajax/cinemaList?day=${reqList.day}&offset=${reqList.offset}&limit=20&districtId=${reqList.districtId}&lineId=${reqList.lineId}&hallType=${reqList.hallType}&brandId=${reqList.brandId}&serviceId=${reqList.serviceId}&areaId=${reqList.areaId}&stationId=${reqList.stationId}&item=&updateShowDay=true&reqId=${reqList.reqId}&cityId=${id}`
+      url:` http://m.maoyan.com/ajax/cinemaList?day=${reqList.day}&offset=${reqList.offset}&limit=20&districtId=${reqList.districtId}&lineId=${reqList.lineId}&hallType=${reqList.hallType}&brandId=${reqList.brandId}&serviceId=${reqList.serviceId}&areaId=${reqList.areaId}&stationId=${reqList.stationId}&item=&updateShowDay=true&reqId=${reqList.reqId}&cityId=${Data.id}`
     }).then(res=>{
       console.log("*****",res);
     })
