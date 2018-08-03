@@ -17,7 +17,20 @@ export default class Cinema extends Component {
       type:'',
       cityData:{},
       allData:[],
-      selectItems:[{nm:'全城',type:'city'},{nm:'品牌',type:'brand'},{nm:'特色',type:'special'}]
+      selectItems:[{nm:'全城',type:'city'},{nm:'品牌',type:'brand'},{nm:'特色',type:'special'}],
+      reqList:{
+        offset:'0',
+        day:new Date("yyyy-MM-DD"),
+        districtId:'-1',
+        lineId:'-1',
+        hallType:'-1',
+        brandId:'-1',
+        serviceId:'-1',
+        areaId:'-1',
+        stationId:'-1',
+        reqId:Date.now(),
+        cityId:'',
+      }
     }
   }
   selectItem(item){
@@ -38,10 +51,10 @@ export default class Cinema extends Component {
     this.setState({
       cityData:cityData.geoCity
     },()=>{
-      self.getCinemasList();
+      self.filterCinemasList();
     });
   }
-  getCinemasList(){
+  filterCinemasList(){
     Taro.request({
       url:`http://m.maoyan.com/ajax/filterCinemas?ci=${this.state.cityData.id}`
     }).then(res=>{
@@ -53,6 +66,12 @@ export default class Cinema extends Component {
       }
     })
   }
+  getCinemasList(){
+    Taro.request({
+      method:'GET',
+      url:` http://m.maoyan.com/ajax/cinemaList?day=2018-08-03&offset=0&limit=20&districtId=-1&lineId=-1&hallType=-1&brandId=-1&serviceId=-1&areaId=-1&stationId=-1&item=&updateShowDay=true&reqId=1533290240340&cityId=150`
+    }).then(res=>{})
+  }
   componentDidMount () {
     this.getStorageData();
   }
@@ -60,6 +79,7 @@ export default class Cinema extends Component {
     Taro.navigateTo({url:url});
   }
   render () {
+    let cinemas = this.state.cinemas;
     return (
       <View className='cinemas'>
         <View className="navHeader">
@@ -84,6 +104,30 @@ export default class Cinema extends Component {
           <Selectbar data={this.state.allData} type={this.state.type}/>
           <Specialbar data={this.state.allData} type={this.state.type}/>
           <Brandbar data={this.state.allData} type={this.state.type}/>
+        </View>
+        <View className="cinemasContainer">
+        {cinemas.map(item =>{
+          return(
+            <View className="cinemasItem" key={item.id}>
+              <View className="leftCinemas">
+                <View className="cinemaName">{item.nm}<Text className="price">{item.sellPrice}</Text><Text className="smallText">元起</Text></View>
+                <View className="cinemaAddr">{item.addr}</View>
+                <View className="cinemaTag">
+                  <View className="tag">小吃</View>
+                  {item.tag.vipTag?<View className="tag">{item.tag.vipTag}</View>:""}
+                  {item.tag.hallType.map((type,index)=>{
+                    return (
+                      <View className="other" key={index}>{type}</View>
+                    )
+                  })}
+                </View>
+                {item.promotion.cardPromotionTag?<View className="cinemaDiscount"><Text className="card">卡</Text>{item.promotion.cardPromotionTag}</View>:""}
+                <View className="cinemaRecent">近期场次：{item.showTimes}</View>
+              </View>
+              <View className="cinemasDis">{item.distance}</View>
+            </View>
+          )})
+        }
         </View>
       </View>
     )
