@@ -1,4 +1,5 @@
 .detailContainer{
+  position: relative;
   width: 100vw;
   height: 100vh;
   .detailBox{
@@ -99,7 +100,7 @@
       background-color: #e54847;
       font-size: 0.8rem;
       margin:0% 5% 3% 5%;
-      border-radius: .5rem;
+      border-radius: .3rem;
     }
     .introduceContent{
       width: 90%;
@@ -108,6 +109,7 @@
       padding: 0 5%;
       color: #868686;
       font-size: 0.75rem;
+      transition: all 1s linear;
     }
     .showContent{
       height: auto !important;
@@ -203,6 +205,69 @@
           transform: rotate(-45deg);
         }
       }
+    }
+  }
+  .musicCon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 60Px;
+    line-height: 60Px;
+    .icon{
+        width:0.3rem;
+        height: 0.3rem;
+        border-top:none;
+        border-left:none;
+        border-right:2px solid #666;
+        border-bottom:2px solid #666;
+        margin-right: 20px;
+        transform: rotate(-45deg);
+      }
+    .content{
+      flex:1;
+      height: 60Px;
+      .text{
+        height: 60Px;
+        line-height: 60Px;
+        .bold{
+          font-weight: 700;
+          height: 30Px;
+          line-height: 30Px;
+        }
+        .name{
+          height: 20Px;
+          line-height: 20Px;
+        }
+        .movieText{
+          color: #666;
+          font-size:0.65rem;
+          padding-left:20px;
+        }
+      }
+    }
+    img,image{
+      width: 25Px;
+      height: 25Px;
+      padding-left:30px;
+    }
+  }
+  #video{
+    width: 70%;
+    height: 8.2rem;
+    position:absolute;
+    z-index: 999;
+    top:9.6rem;
+    left:15%;
+    border:5px solid #fff;
+    animation: show ease 1s;
+  }
+  @keyframes show{
+    0%{
+      transform: scale(0);
+    }
+    100%{
+      transform: scale(1);
     }
   }
 }

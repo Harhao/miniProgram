@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View,Image} from '@tarojs/components'
 import playPng from "../../assets/images/play.png";
+import musicPng from "../../assets/images/music.png";
 import './content.scss'
 
 export default class Content extends Component {
@@ -11,6 +12,7 @@ export default class Content extends Component {
     super(props);
     this.state={
       showContent:false,
+      playHide:true,
       params:{},
       detailMovie:{},
     }
@@ -61,6 +63,13 @@ export default class Content extends Component {
       showContent:!self.state.showContent
     })
   }
+  playVideo(e){
+    let self = this;
+    e.stopPropagation();
+    this.setState({
+      playHide:!self.state.playHide
+    });
+  }
   render () {
     let itemData = this.state.detailMovie;
     let photos = itemData.photos;
@@ -102,7 +111,7 @@ export default class Content extends Component {
             <View className="title">媒体库</View>
             <ScrollView scrollX style='height:80Px' className='media' scrollTop='0' lowerThreshold='10' className="mediaPhoto"
             >
-              <View className="videoCon">
+              <View className="videoCon" onClick={this.playVideo.bind(this,e)}>
                 <Image src={itemData.videoImg}></Image>
                 <Image className="playIcon" src={playPng}></Image>
               </View>
@@ -128,6 +137,29 @@ export default class Content extends Component {
           </View>
         </View>
         <View className="line"></View>
+        <View className="musicCon">
+          <Image src={musicPng}></Image>
+          <View className="content">
+            <View className="text">
+              <View className="movieText bold">电影原声</View>
+              <View className="movieText name">{itemData.musicName}</View>
+            </View>
+          </View>
+          <View className="icon"></View>
+        </View>
+        <Video
+            src={itemData.videourl}
+            hidden={this.state.playHide}
+            controls={true}
+            autoplay={false}
+            poster={itemData.videoImg}
+            initialTime='0'
+            id="video"
+            loop={false}
+            muted={false}
+            direction="-90"
+            onlongpress={this.playVideo.bind(this,e)}
+          />
       </ScrollView>
     )
   }
