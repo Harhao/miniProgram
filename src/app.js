@@ -6,7 +6,7 @@ class App extends Component {
     pages: [
       'pages/movies/movies',
       'pages/person/person',
-      'pages/theme/theme',
+      'pages/cinema/cinema',
       'pages/position/position',
       'pages/search/search',
       'pages/detail/detail',
@@ -30,7 +30,7 @@ class App extends Component {
         iconPath: './assets/images/index.png',
         selectedIconPath: './assets/images/index_focus.png'
       },{
-        pagePath:"pages/theme/theme",
+        pagePath:"pages/cinema/cinema",
         text:"影院",
         iconPath: './assets/images/themeOld.png',
         selectedIconPath: './assets/images/theme.png'

@@ -1,10 +1,11 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import './theme.scss'
+import './cinema.scss'
 
-export default class Theme extends Component {
+export default class Cinema extends Component {
   config = {
-    navigationBarTitleText: '猫眼电影'
+    navigationBarTitleText: '影院',
+    enablePullDownRefresh:false,
   }
 
   componentWillMount () { }
@@ -19,8 +20,8 @@ export default class Theme extends Component {
 
   render () {
     return (
-      <View className='index'>
-        <Text>theme</Text>
+      <View className='cinemas'>
+        <Text>cinemas</Text>
       </View>
     )
   }
