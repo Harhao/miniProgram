@@ -1,0 +1,95 @@
+.person{
+  width: 100%;
+  height: 100vh;
+  .tabCon{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 85px;
+    .tabItem{
+      flex: 1;
+      height: 85px;
+      line-height: 85px;
+      text-align: center;
+      color: #333;
+      font-weight: 700;
+      font-size: 0.65rem;
+      border-bottom:5px solid #f8f8f8;
+    }
+    .active{
+      color: #df2d2d;
+      border-bottom: 5px solid #df2d2d;
+    }
+  }
+  .meituan{
+    width: 100%;
+    height: 170Px;
+    Input{
+      height: 85px;
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+      margin:0 0.5rem;
+      border-bottom:5px solid #f8f8f8;
+    }
+    Input:focus{
+      background-color: #f8f8f8;
+    }
+    .login{
+      background-color: #df2d2d;
+      margin:1rem 1rem;
+      color: #fff;
+    }
+  }
+  .mobile{
+    width: 100%;
+    height: 170Px;
+    .login{
+      background-color: #df2d2d;
+      margin:1rem 1rem;
+      color: #fff;
+    }
+    Input{
+      height: 85px;
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+      margin:0 0.5rem;
+      border-bottom:5px solid #f8f8f8;
+    }
+    Input:focus{
+      background-color: #f8f8f8;
+    }
+    .phone{
+      width: 100%;
+      position: relative;
+      & Button{
+        position: absolute;
+        z-index:99;
+        left:15rem;
+        bottom:0.4rem;
+        width: 4rem;
+        height: 60px;
+        padding:0;
+      }
+    }
+  }
+  .copyright{
+    width: 100%;
+    height: 4rem;
+    .operate{
+      display: flex;
+      height: 85px;
+      justify-content: space-between;
+      padding: 0.2rem 0.5rem;
+      margin:0 0.5rem;
+      .register,.findPass{
+        color: #df2d2d;
+        font-size: 0.7rem;
+      }
+    }
+    .company{
+      color: #333;
+      text-align: center;
+      font-size: 0.7rem;
+    }
+  }
+}
