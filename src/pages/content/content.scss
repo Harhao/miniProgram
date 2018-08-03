@@ -153,17 +153,56 @@
     .mediaPhoto{
       white-space: nowrap;
       margin-left: 0.8rem;
-      img,image{
+      .videoCon{
         display: inline-block;
         width: 140Px;
-        height: 90Px;
+        height: 80Px;
+        position: relative;
+        padding-right: 10px;
+        .playIcon{
+          position:absolute;
+          width: 40px;
+          height: 40px;
+          bottom:10px;
+          right:10px;
+        }
+      }
+      &>img,image{
+        display: inline-block;
+        width: 140Px;
+        height: 80Px;
         padding-right: 10px;
       }
     }
     .count{
+      display: flex;
+      flex-direction: row;
+      color: #666;
+      font-size: 0.65rem;
       width:100%;
       height: 2.3rem;
-      .video,
+      .video,.cinemaPic{
+        flex: 1;
+        height: 2.3rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin-left: 0.8rem;
+        .desc{
+          height: 2.3rem;
+          line-height: 2.3rem;
+        }
+        .icon{
+          width:0.3rem;
+          height: 0.3rem;
+          border-top:none;
+          border-left:none;
+          border-right:2px solid #666;
+          border-bottom:2px solid #666;
+          transform: rotate(-45deg);
+        }
+      }
     }
   }
 }

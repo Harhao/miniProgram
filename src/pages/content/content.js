@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View,Image} from '@tarojs/components'
+import playPng from "../../assets/images/play.png";
 import './content.scss'
 
 export default class Content extends Component {
@@ -103,7 +104,7 @@ export default class Content extends Component {
             >
               <View className="videoCon">
                 <Image src={itemData.videoImg}></Image>
-                <Image className="playIcon" src={}></Image>
+                <Image className="playIcon" src={playPng}></Image>
               </View>
               {
                 photos.map((item,index) =>{
@@ -114,8 +115,16 @@ export default class Content extends Component {
               }
             </ScrollView>
           <View className="count">
-            <View className="video"></View>
-            <View className="cinemaPic"></View>
+            <View className="video">
+              <View className="desc">视频</View>
+              <View>{itemData.vnum}</View>
+              <View className="icon"></View>
+            </View>
+            <View className="cinemaPic">
+              <View className="desc">剧照</View>
+              <View>{itemData.pn}</View>
+              <View className="icon"></View>
+            </View>
           </View>
         </View>
         <View className="line"></View>
