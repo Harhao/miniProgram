@@ -57,7 +57,7 @@ export default class Position extends Component {
     let data = Taro.getStorageSync("cities");
     data.geoCity = item;
     Taro.setStorageSync("cities",data);
-    Taro.reLaunch({ url: "../movies/movies" });
+    Taro.navigateBack({ delta: 1 });
   }
   setView(item){
     let id = item.id;

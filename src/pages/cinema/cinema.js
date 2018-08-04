@@ -120,7 +120,7 @@ export default class Cinema extends Component {
         lowerThreshold='20'
       >
         <View className="navHeader">
-          <View className="location">
+          <View className="location" onClick={this.navigate.bind(this,'../position/position')}>
             {this.state.cityData.nm}
             <View className="tangle"></View>
           </View>
