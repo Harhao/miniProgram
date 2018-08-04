@@ -41,3 +41,187 @@
     }
   }
 }
+.resultCon{
+  .resultItem{
+    &>.title{
+      font-size: 0.75rem;
+      color: #333;s
+      height: 40Px;
+      line-height: 40Px;
+      margin-left: 30px;
+      border-bottom:2px solid #f8f8f8;
+    }
+    .cinemasItem{
+      display: flex;
+      flex-direction: row;
+      margin-left: 25px;
+      padding:23px 25px 23px 0px;
+      border-bottom:1px solid #b0b0b0;
+      .leftCinemas{
+        flex:1;
+        .cinemaName{
+          height: 40px;
+          line-height: 40px;
+          font-size: 0.9rem;
+          color: #000;
+          overflow: hidden;
+          text-overflow:ellipsis;
+          white-space: nowrap;
+          .price{
+            color: #f03d37;
+            font-size: 1rem;
+          }
+          .smallText{
+            color: #f03d37;
+            font-size: 0.6rem;
+          }
+        }
+        .cinemaAddr{
+          font-size: 0.7rem;
+          color: #666;
+          margin-top:25px;
+        }
+        .cinemaDiscount{
+          color: #999;
+          font-size: 0.65rem;
+          margin-top:15px;
+          .card{
+            font-size:0.5rem;
+            background-color:#59c0f8;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            margin-right:8px;
+          }
+        }
+        .cinemaTag{
+          .tag,.other{
+            display: inline-block;
+            margin-right:8px;
+            font-size: 0.6rem;
+            border-radius: 8px;
+          }
+          .tag{
+            color: #f90;
+            border: 1px solid #f90;
+          }
+          .other{
+            color: #59c0f8;
+            border: 1px solid #59c0f8;
+          }
+        }
+        .cinemaRecent{
+          color: #777;
+          font-size:0.6rem;
+          margin-top:15px;
+        }
+      }
+      .cinemasDis{
+        display: flex;
+        font-size: 0.65rem;
+        color: #666;
+        justify-content:center;
+        align-items:center;
+      }
+    }
+    & .dataItem{
+      display: flex;
+      flex-direction: row;
+      margin:0 20px;
+      padding-top: 5Px;
+      .leftItem{
+        margin-top:16px;
+      }
+      .leftItem image,img{
+        width:128px;
+        height:182px;
+      }
+      .rightItem{
+        display:flex;
+        flex-direction: row;
+        flex:1;
+        padding-top:12px;
+        padding-left:20px;
+        padding-right: 14px;
+        padding-bottom:12px;
+        border-bottom: 2px solid #ddd;
+        .itemContent{
+          width:12rem;
+          .title{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            font-size: 0.9rem;
+            color: #333;
+            font-weight: 700;
+            padding-right: 5px;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+          }
+          .icon{
+            width:43PX;
+            height: 16PX;
+            margin-left:0.15rem;
+            margin-top:0.15rem;
+            image,img{
+              width:100%;
+              height: 100%;
+            }
+          }
+          .comment{
+            width:60%;
+            .yellow{
+              font-weight: 700;
+              color: #faaf00;
+              font-size: 0.8rem;
+            }
+          }
+          .person{
+            width: 70%;
+            margin-top: 6Px;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+          }
+          .smallFont{
+            font-size: 0.7rem;
+            color: #666;
+          }
+          .showInfo{
+            margin-top: 6Px;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            width:80%;
+          }
+        }
+        .operate{
+          display: flex;
+          flex:1;
+          height: 100%;
+          justify-content: flex-end;
+          align-items: center;
+          .buyTicket,.preBuy{
+            width: 47Px;
+            height: 27Px;
+            line-height: 27Px;
+            text-align: center;
+            color: #fff;
+            border-radius: 4Px;
+            white-space: nowrap;
+            font-size: 12Px;
+            cursor: pointer;
+          }
+          .buyTicket{
+            background-color: #f03d37;
+          }
+          .preBuy{
+            background-color: #3c9fe6;
+          }
+        }
+
+      }
+    }
+  }
+}
