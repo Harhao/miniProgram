@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View,Image} from '@tarojs/components'
-import './CinemasDetail.scss'
+import './CinemaDetail.scss'
 
 export default class CinemasDetail extends Component {
   config={
@@ -11,5 +11,9 @@ export default class CinemasDetail extends Component {
 
   componentDidMount () {
   }
-  render () {}
+  render () {
+    return(
+      <View>CinemaDetail</View>
+    )
+  }
 }
