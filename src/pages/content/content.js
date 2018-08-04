@@ -37,7 +37,7 @@ export default class Content extends Component {
   }
   getDetailData(){
     Taro.request({
-      url:`http://m.maoyan.com/ajax/detailmovie?movieId=${this.state.params.id}`
+      url:`https://m.maoyan.com/ajax/detailmovie?movieId=${this.state.params.id}`
     }).then(res=>{
       if(res.statusCode == 200){
         let data = res.data.detailMovie;

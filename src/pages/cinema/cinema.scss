@@ -82,12 +82,12 @@
       margin-top: 5px;
     }
   }
-  .selected{
+  .active{
     color: #f03d37 !important;
     .tangle{
       width: 0;
       height: 0;
-      border: 4Px solid #f03d37;
+      border: 4Px solid #f03d37 !important;
       border-left-color: transparent;
       border-right-color: transparent;
       border-top-color: transparent;

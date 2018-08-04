@@ -58,7 +58,7 @@ export default class Cinema extends Component {
   filterCinemasList(){
     let cityObj = Taro.getStorageSync('cities');
     Taro.request({
-      url:`http://m.maoyan.com/ajax/filterCinemas?ci=${cityObj.geoCity.id}`
+      url:`https://m.maoyan.com/ajax/filterCinemas?ci=${cityObj.geoCity.id}`
     }).then(res=>{
       if(res.statusCode == 200){
         this.setState({
@@ -84,7 +84,7 @@ export default class Cinema extends Component {
     });
     Taro.request({
       method:'GET',
-      url:`http://m.maoyan.com/ajax/cinemaList?day=${reqList.day}&offset=${reqList.offset}&limit=20&districtId=${reqList.districtId}&lineId=${reqList.lineId}&hallType=${reqList.hallType}&brandId=${reqList.brandId}&serviceId=${reqList.serviceId}&areaId=${reqList.areaId}&stationId=${reqList.stationId}&item=&updateShowDay=true&reqId=${reqList.reqId}&cityId=${cityObj.geoCity.id}`,
+      url:`https://m.maoyan.com/ajax/cinemaList?day=${reqList.day}&offset=${reqList.offset}&limit=20&districtId=${reqList.districtId}&lineId=${reqList.lineId}&hallType=${reqList.hallType}&brandId=${reqList.brandId}&serviceId=${reqList.serviceId}&areaId=${reqList.areaId}&stationId=${reqList.stationId}&item=&updateShowDay=true&reqId=${reqList.reqId}&cityId=${cityObj.geoCity.id}`,
     }).then(res=>{
       if(res.statusCode == 200){
         Taro.hideLoading();
@@ -132,7 +132,7 @@ export default class Cinema extends Component {
         <View className="toolBar">
           {this.state.selectItems.map((item,index)=>{
             return (
-              <View className={this.state.type == item.type?'selected selectItem':'selectItem'} key={index} onClick={this.selectItem.bind(this,item)}>
+              <View className={this.state.type == item.type?'selectItem active':'selectItem'} key={index} onClick={this.selectItem.bind(this,item)}>
                 {item.nm}
                 <View className="tangle"></View>
               </View>

@@ -44,7 +44,6 @@ class App extends Component {
   }
 
   componentDidMount () {
-    this.getCities();
   }
 
   componentDidShow () {}
@@ -52,20 +51,7 @@ class App extends Component {
   componentDidHide () {}
 
   componentCatchError () {}
-  getCities(){
-    Taro.request({
-      url:"http://localhost:3000/cities",
-      method:"GET"
-    }).then(res=>{
-      if(res.statusCode == 200){
-        let data = res.data;
-        Taro.setStorageSync(
-          "cities",
-          data
-        )
-      }
-    })
-  }
+
   render () {
     return (
       <Movies />

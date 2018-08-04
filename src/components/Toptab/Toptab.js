@@ -11,8 +11,8 @@ export default class Toptab extends Component{
     let data = Taro.getStorageSync("cities");
     this.state = {
       currentNavtab:0,
-      name:data.geoCity.nm,
-      id:data.geoCity.id,
+      name:data.geoCity?data.geoCity.nm:'',
+      id:data.geoCity?data.geoCity.id:'',
       navTab:["正在热映","即将上映"],
       onList:[],
       movieIds:null,
@@ -40,7 +40,7 @@ export default class Toptab extends Component{
       title:"加载中"
     });
     Taro.request({
-      url:"http://m.maoyan.com/ajax/movieOnInfoList?token=",
+      url:"https://m.maoyan.com/ajax/movieOnInfoList?token=",
       method:"GET",
       header:{
         "Cookie":`_lxsdk_cuid=164b6cae2cac8-02b7b032f571b5-39614706-1fa400-164b6cae2cbc8; v=3; iuuid=1A6E888B4A4B29B16FBA1299108DBE9CA19FF6972813B39CA13A8D9705187374; revrev=76338a29; _lx_utm=utm_source%3DBaidu%26utm_medium%3Dorganic; webp=true; __mta=3463951.1532075108184.1533098338076.1533118040602.20; _lxsdk=1A6E888B4A4B29B16FBA1299108DBE9CA19FF6972813B39CA13A8D9705187374; from=canary; selectci=true; __mta=3463951.1532075108184.1533118040602.1533118773295.21; _lxsdk_s=164f4f4c9e9-45e-d1b-46%7C%7C50; ci=${cityId}`
@@ -68,7 +68,7 @@ export default class Toptab extends Component{
   }
   appendToList(){
     Taro.showLoading({title: '加载中'})
-    let url = "http://m.maoyan.com/ajax/moreComingList?token=&movieIds=";
+    let url = "https://m.maoyan.com/ajax/moreComingList?token=&movieIds=";
     let startIndex = this.state.startIndex;
     let lastIndex = this.state.lastIndex;
     if(startIndex >= lastIndex){
@@ -117,7 +117,7 @@ export default class Toptab extends Component{
     let expectData = self.state.expectData
     let ci = self.state.id;
     Taro.request({
-      url:`http://m.maoyan.com/ajax/mostExpected?ci=${ci}&limit=10&offset=${offset}&token=`,
+      url:`https://m.maoyan.com/ajax/mostExpected?ci=${ci}&limit=10&offset=${offset}&token=`,
       method:'GET'
     }).then(res=>{
       if(res.statusCode == 200){
