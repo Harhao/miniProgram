@@ -48,6 +48,11 @@ export default class Search extends Component {
       self.searchList();
     })
   }
+  clear(){
+    this.setState({
+      keyWord:''
+    });
+  }
   render () {
     let movies = this.state.movieList;
     let cinemas = this.state.cinemasList;
@@ -59,9 +64,9 @@ export default class Search extends Component {
         lowerThreshold='20'
       >
         <View className="navHeader">
-          <Input className="search" type="text" placeholder="搜影院、搜影院" onInput={this.setKeyWord.bind(this,e)}>
+          <Input className="search" type="text" placeholder="搜影院、搜影院" onInput={this.setKeyWord.bind(this,e)} value={this.state.keyWord}>
           </Input>
-          <View className="cancel">
+          <View className="cancel" onClick={this.clear.bind(this)}>
               取消
           </View>
         </View>
