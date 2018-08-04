@@ -29,7 +29,8 @@ export default class Cinema extends Component {
         areaId:'-1',
         stationId:'-1',
         reqId:Date.now(),
-      }
+      },
+      cinemas:[]
     }
   }
   selectItem(item){
@@ -55,8 +56,9 @@ export default class Cinema extends Component {
     });
   }
   filterCinemasList(){
+    let cityObj = Taro.getStorageSync('cities');
     Taro.request({
-      url:`http://m.maoyan.com/ajax/filterCinemas?ci=${this.state.cityData.id}`
+      url:`http://m.maoyan.com/ajax/filterCinemas?ci=${cityObj.geoCity.id}`
     }).then(res=>{
       if(res.statusCode == 200){
         this.setState({
@@ -75,13 +77,30 @@ export default class Cinema extends Component {
   }
   getCinemasList(){
     let reqList = this.state.reqList;
-    let Data = this.state.cityData;
-    console.log("city id is ",this.state.cityData.id);
+    let cityObj = Taro.getStorageSync('cities');
+    let self = this;
+    Taro.showLoading({
+      title:"加载中"
+    });
     Taro.request({
       method:'GET',
-      url:` http://m.maoyan.com/ajax/cinemaList?day=${reqList.day}&offset=${reqList.offset}&limit=20&districtId=${reqList.districtId}&lineId=${reqList.lineId}&hallType=${reqList.hallType}&brandId=${reqList.brandId}&serviceId=${reqList.serviceId}&areaId=${reqList.areaId}&stationId=${reqList.stationId}&item=&updateShowDay=true&reqId=${reqList.reqId}&cityId=${Data.id}`
+      url:`http://m.maoyan.com/ajax/cinemaList?day=${reqList.day}&offset=${reqList.offset}&limit=20&districtId=${reqList.districtId}&lineId=${reqList.lineId}&hallType=${reqList.hallType}&brandId=${reqList.brandId}&serviceId=${reqList.serviceId}&areaId=${reqList.areaId}&stationId=${reqList.stationId}&item=&updateShowDay=true&reqId=${reqList.reqId}&cityId=${cityObj.geoCity.id}`,
     }).then(res=>{
-      console.log("*****",res);
+      if(res.statusCode == 200){
+        Taro.hideLoading();
+        let data = res.data;
+        self.setState({
+          cinemas:self.state.cinemas.concat(data.cinemas)
+        });
+      }
+    })
+  }
+  loadMore(){
+    let self = this;
+    this.setState({
+      offset:self.state.offset+20
+    },()=>{
+      self.getCinemasList();
     })
   }
   componentDidMount () {
@@ -93,7 +112,13 @@ export default class Cinema extends Component {
   render () {
     let cinemas = this.state.cinemas;
     return (
-      <View className='cinemas'>
+      <ScrollView className='cinemas' scrollY
+        scrollWithAnimation
+        scrollTop='0'
+        style='height: 100vh;'
+        onScrolltolower={this.loadMore.bind(this)}
+        lowerThreshold='20'
+      >
         <View className="navHeader">
           <View className="location">
             {this.state.cityData.nm}
@@ -134,14 +159,13 @@ export default class Cinema extends Component {
                   })}
                 </View>
                 {item.promotion.cardPromotionTag?<View className="cinemaDiscount"><Text className="card">卡</Text>{item.promotion.cardPromotionTag}</View>:""}
-                <View className="cinemaRecent">近期场次：{item.showTimes}</View>
               </View>
               <View className="cinemasDis">{item.distance}</View>
             </View>
           )})
         }
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }

@@ -92,9 +92,83 @@
       border-right-color: transparent;
       border-top-color: transparent;
       display: inline-block;
-      margin-top: -20px;
+      margin-top:-20px;
       margin-left: 4px;
-
+    }
+  }
+}
+.cinemasContainer{
+  .cinemasItem{
+    display: flex;
+    flex-direction: row;
+    margin-left: 25px;
+    padding:23px 25px 23px 0px;
+    border-bottom:1px solid #b0b0b0;
+    .leftCinemas{
+      flex:1;
+      .cinemaName{
+        height: 40px;
+        line-height: 40px;
+        font-size: 0.9rem;
+        color: #000;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        .price{
+          color: #f03d37;
+          font-size: 1rem;
+        }
+        .smallText{
+          color: #f03d37;
+          font-size: 0.6rem;
+        }
+      }
+      .cinemaAddr{
+        font-size: 0.7rem;
+        color: #666;
+        margin-top:25px;
+      }
+      .cinemaDiscount{
+        color: #999;
+        font-size: 0.65rem;
+        margin-top:15px;
+        .card{
+          font-size:0.5rem;
+          background-color:#59c0f8;
+          color: #fff;
+          padding: 5px;
+          border-radius: 5px;
+          margin-right:8px;
+        }
+      }
+      .cinemaTag{
+        .tag,.other{
+          display: inline-block;
+          margin-right:8px;
+          font-size: 0.6rem;
+          border-radius: 8px;
+        }
+        .tag{
+          color: #f90;
+          border: 1px solid #f90;
+        }
+        .other{
+          color: #59c0f8;
+          border: 1px solid #59c0f8;
+        }
+      }
+      .cinemaRecent{
+        color: #777;
+        font-size:0.6rem;
+        margin-top:15px;
+      }
+    }
+    .cinemasDis{
+      display: flex;
+      font-size: 0.65rem;
+      color: #666;
+      justify-content:center;
+      align-items:center;
     }
   }
 }
