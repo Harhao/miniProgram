@@ -72,6 +72,12 @@ export default class CinemasDetail extends Component {
       tabIndex:index
     });
   }
+  navigateToMap(url,cinemaData){
+    url = url+`?lng=${cinemaData.lng}&lat=${cinemaData.lat}`;
+    Taro.navigateTo({
+      url:url
+    })
+  }
   componentDidMount () {
     this.getCinemaDetail();
   }
@@ -90,7 +96,7 @@ export default class CinemasDetail extends Component {
             <View className="name">{cinemaData.nm}</View>
             <View className="addr">{cinemaData.addr}</View>
           </View>
-          <View className="locateIcon">
+          <View className="locateIcon" onClick={this.navigateToMap(this,"../map/map",cinemaData)}>
             <Image src={posPng}></Image>
           </View>
         </View>

@@ -11,7 +11,8 @@ class App extends Component {
       'pages/search/search',
       'pages/detail/detail',
       'pages/content/content',
-      'pages/cinemaDetail/cinemaDetail'
+      'pages/cinemaDetail/cinemaDetail',
+      'pages/map/map'
     ],
     window: {
       backgroundTextStyle: '#fff',
