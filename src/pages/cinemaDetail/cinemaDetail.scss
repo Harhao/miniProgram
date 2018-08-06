@@ -1,0 +1,268 @@
+.cinemaDetail{
+  width: 100%;
+  height: 100vh;
+  .header{
+    width: 100%;
+    height: 74Px;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: row;
+    .locationInfo{
+      flex:1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-left: 35px;
+      .name{
+        height:40Px;
+        line-height: 40Px;
+        color: #333;
+        font-weight: 700;
+      }
+      .addr{
+        margin-top: 2px;
+        font-size: 0.65rem;
+        height: 25Px;
+        color: #999;
+      }
+    }
+    .locateIcon{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height:100%;
+      margin-right: 15px;
+      image,img{
+        display: inline-block;
+        width: 45px;
+        height:50px;
+        padding-left:35px;
+        padding-right:35px;
+        border-left: 2px solid #ddd;
+      }
+    }
+  }
+  .showCon{
+    position: relative;
+    width: 100%;
+    height: 130Px;
+    line-height: 130Px;
+    overflow: hidden;
+    .bg{
+      width: 100%;
+      height: 130Px;
+      position: absolute;
+      z-index: -2;
+      filter: blur(10px);
+      transform: scale(1.2);
+    }
+    .blur{
+      width: 100%;
+      height: 130Px;
+      position: absolute;
+      background-color: #333;
+      opacity: 0.5;
+      z-index: -1;
+    }
+    .scrollview{
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      height: 130Px;
+      white-space:nowrap;
+        image,img{
+          display: inline-block;
+          width:60Px;
+          height: 90PX;
+          margin: 20Px 20px;
+        }
+        .active{
+          transform:scale(1.1);
+          border:5px solid #fff;
+        }
+        .active::after{
+          display: block;
+          content: "";
+          position: absolute;
+          bottom: -6px;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+          width: 10px;
+          height: 15px;
+          background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAAGXRFW…DgLorvI3AVJWozsELJuhmYocyaCvQo1f2jeiT/cK8AAwBzvH2t7aaajQAAAABJRU5ErkJggg== ) no-repeat;
+          background-size: contain;
+        }
+    }
+  }
+  .movieInfo{
+    width: 100%;
+    height: 68Px;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+    .movieName{
+      height: 38Px;
+      line-height: 38Px;
+      color: #333;
+      text-align: center;
+      font-size:0.85rem;
+      font-weight: 700;
+      .comment{
+        color: #ffb400;
+      }
+    }
+    .movieDesc{
+      height: 30Px;
+      line-height: 30Px;
+      text-align: center;
+      color: #999;
+      font-size:0.65rem;
+    }
+  }
+  .dateSelect{
+    width: 100%;
+    height: 50Px;
+    white-space: nowrap;
+    border-bottom:  1px solid #f0f0f0;
+    .dateItem{
+      display: inline-block;
+      width: 20%;
+      height: 50Px;
+      font-size: 0.75rem;
+      line-height: 50Px;
+      padding:0 20px;
+      font-weight: 700;
+      border-bottom: 2Px solid #f0f0f0;
+    }
+    .selected{
+      color: #f03d37;
+      padding-top: -5px;
+      border-bottom: 5Px solid #f03d37 !important;
+    }
+  }
+  .list{
+    width: 100%;
+    height: auto;
+    .ticketInfo{
+      width: 100%;
+      height:60Px;
+      line-height: 60Px;
+      padding: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .time{
+        font-size: 0.85rem;
+        color: #333;
+        padding: 0 10px;
+        white-space: nowrap;
+        font-weight: 700;
+      }
+      .station{
+        width: 6rem;
+        height: 60Px;
+        padding:0 10px;
+        .lang{
+          height: 40Px;
+          line-height: 40Px;
+          font-size: 0.75rem;
+          color: #333;
+          padding:0 30px;
+        }
+        .hall{
+          height: 20Px;
+          line-height: 20Px;
+          font-size:0.6rem;
+          color: #999;
+          padding:0 30px;
+        }
+
+      }
+      .sellPrice{
+        flex:2;
+        .price{
+          font-size:0.65rem;
+          height: 40Px;
+          line-height: 40Px;
+          color:#999;
+          .mark{
+            color:#f03d37;
+            font-size: 1rem;
+            padding-right: 10px;
+          }
+        }
+        .discount{
+          font-size:0.55rem;
+          color: #999;
+          height: 20Px;
+          line-height: 20Px;
+        }
+      }
+      .button{
+        text-align: center;
+        vertical-align: middle;
+        width:47Px;
+        height: 27Px;
+        line-height: 27Px;
+        font-size:0.65rem;
+        margin:0 40px 0 30px;
+        color: #fff;
+        background-color: #f03d37;
+        border-radius: 10px;
+      }
+    }
+  }
+  .line{
+    width: 100%;
+    height: 20px;
+    background-color: #f0f0f0;
+  }
+  .things{
+    .item{
+      display: flex;
+      flex-direction: row;
+      padding:20px 0px;
+      Image,img{
+        width: 70Px;
+        height:70Px;
+        padding:15px;
+      }
+      .con{
+        flex:1;
+        margin:0 20px;
+        .name{
+          .icon{
+            width: 15Px;
+            height: 15Px;
+            font-size: 0.65rem;
+            padding:10px;
+            color: #fff;
+            border-radius: 8px;
+            background-color: #f90;
+          }
+          .desc{
+            font-size:0.75rem;
+            color: #333;
+            margin-left: 20px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+        .sellCount{
+          font-size: 0.7rem;
+          text-align: right;
+          color:#333;
+        }
+        .operate{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+}

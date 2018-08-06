@@ -23,7 +23,6 @@ export default class Movies extends Component {
     }).then(res=>{
       if(res.statusCode == 200){
         let data = res.data;
-        console.log("获取到地址>>>>>",data);
         Taro.setStorageSync(
           "cities",
           data
