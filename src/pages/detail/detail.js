@@ -246,6 +246,11 @@ export default class Detail extends Component {
     url = url+`?id=${item.id}&title=${item.nm}&cityId=${cityId}`
     Taro.navigateTo({ url: url })
   }
+  navigateToCinema(url,item){
+    url = url +`?cinemaId=${item.id}&movieId=${this.state.params.id}`;
+    console.log(url);
+    Taro.navigateTo({ url: url })
+  }
   render () {
     let itemData = this.state.detailMovie;
     let cinemas = this.state.cinemas;
@@ -305,7 +310,7 @@ export default class Detail extends Component {
         <View className="cinemas">
           {cinemas.map(item =>{
             return(
-              <View className="cinemasItem" key={item.id}>
+              <View className="cinemasItem" key={item.id} onClick={this.navigateToCinema.bind(this,"../cinemaDetail/cinemaDetail",item)}>
                 <View className="leftCinemas">
                   <View className="cinemaName">{item.nm}<Text className="price">{item.sellPrice}</Text><Text className="smallText">元起</Text></View>
                   <View className="cinemaAddr">{item.addr}</View>
