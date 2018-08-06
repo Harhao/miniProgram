@@ -233,6 +233,7 @@
         flex:1;
         margin:0 20px;
         .name{
+          padding-top: 10px;
           .icon{
             width: 15Px;
             height: 15Px;
@@ -243,6 +244,7 @@
             background-color: #f90;
           }
           .desc{
+            display: inline-block;
             font-size:0.75rem;
             color: #333;
             margin-left: 20px;
@@ -252,15 +254,29 @@
           }
         }
         .sellCount{
-          font-size: 0.7rem;
+          font-size: 0.65rem;
           text-align: right;
-          color:#333;
+          color:#fff;
         }
         .operate{
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           font-size: 0.7rem;
+          padding-top:5px;
+          .price{
+            color: #f03d37;
+            font-size:1rem;
+          }
+          .buy{
+            width:47Px;
+            height: 30Px;
+            line-height: 30Px;
+            text-align: center;
+            color: #fff;
+            background-color: #f03d37;
+            border-radius: 8px;
+          }
         }
       }
     }

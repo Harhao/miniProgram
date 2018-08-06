@@ -172,7 +172,7 @@ export default class CinemasDetail extends Component {
                       </View>
                       <View className="sellCount">{item.curNumberDesc}</View>
                       <View className="operate">
-                        <View ClassName="price">{item.price}</View>
+                        <View className="price">{item.price}元</View>
                         <View className="buy">去购买</View>
                       </View>
                     </View>
