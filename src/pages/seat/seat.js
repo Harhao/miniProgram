@@ -16,7 +16,23 @@ export default class Seat extends Component {
   }
   render () {
     return (
-      <View className="selectSeat">Seat</View>
+      <View className="selectSeat">
+        <View className="header">
+          <View className="title"></View>
+          <View className="desc">
+            <Text className="time"></Text>
+            <Text classname="lang"></Text>
+          </View>
+        </View>
+        <View className="seatCon">
+          <View className="hallCon">
+            <View className="hallName"></View>
+          </View>
+          <View className="seatMore">
+            
+          </View>
+        </View>
+      </View>
     );
   }
 }
