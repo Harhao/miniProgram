@@ -33,7 +33,7 @@ export default class CinemasDetail extends Component {
       }
     },()=>{
       Taro.request({
-        url:`http://m.maoyan.com/ajax/cinemaDetail?cinemaId=${cinemaId}&movieId=${movieId}`,
+        url:`https://m.maoyan.com/ajax/cinemaDetail?cinemaId=${cinemaId}&movieId=${movieId}`,
         method:'GET'
       }).then(res=>{
         if(res.statusCode == 200){
@@ -73,7 +73,8 @@ export default class CinemasDetail extends Component {
     });
   }
   navigateToMap(url,cinemaData){
-    url = url+`?lng=${cinemaData.lng}&lat=${cinemaData.lat}`;
+    console.log(url);
+    url = url+`?lng=${cinemaData.lng}&lat=${cinemaData.lat}&title=${cinemaData.nm}`;
     Taro.navigateTo({
       url:url
     })
@@ -96,7 +97,7 @@ export default class CinemasDetail extends Component {
             <View className="name">{cinemaData.nm}</View>
             <View className="addr">{cinemaData.addr}</View>
           </View>
-          <View className="locateIcon" onClick={this.navigateToMap(this,"../map/map",cinemaData)}>
+          <View className="locateIcon" onClick={this.navigateToMap.bind(this,"../map/map",cinemaData)}>
             <Image src={posPng}></Image>
           </View>
         </View>

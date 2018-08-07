@@ -14,7 +14,7 @@ export default class Movies extends Component {
   }
   getCities(){
     Taro.request({
-      url:"http://localhost:3000/cities",
+      url:"https://movies.applinzi.com/cities",
       method:"GET",
       header:{
         "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
