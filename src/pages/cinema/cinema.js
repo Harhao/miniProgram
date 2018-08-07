@@ -109,6 +109,13 @@ export default class Cinema extends Component {
   navigate(url){
     Taro.navigateTo({url:url});
   }
+  navigateToCinema(url,item){
+    let cinemaId = item.id;
+    url = url+`?cinemaId=${cinemaId}`
+    Taro.navigateTo({
+      url:url
+    });
+  }
   render () {
     let cinemas = this.state.cinemas;
     return (
@@ -145,7 +152,7 @@ export default class Cinema extends Component {
         <View className="cinemasContainer">
         {cinemas.map(item =>{
           return(
-            <View className="cinemasItem" key={item.id}>
+            <View className="cinemasItem" key={item.id} onClick={this.navigateToCinema.bind(this,'../cinemaDetail/cinemaDetail',item)}>
               <View className="leftCinemas">
                 <View className="cinemaName">{item.nm}<Text className="price">{item.sellPrice}</Text><Text className="smallText">元起</Text></View>
                 <View className="cinemaAddr">{item.addr}</View>

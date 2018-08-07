@@ -62,7 +62,7 @@ export default class Search extends Component {
   }
   navigateToCinema(url,item){
     console.log(item);
-    let cinemaId = item.id;
+    const cinemaId = item.id;
     url = url+`?cinemaId=${cinemaId}`
     Taro.navigateTo({
       url:url
