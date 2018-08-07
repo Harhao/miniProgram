@@ -45,7 +45,6 @@ export default class Content extends Component {
       if(res.statusCode == 200){
         Taro.hideLoading();
         let data = res.data.detailMovie;
-        console.log(data);
         let arr = data["img"].split("w.h");
         data["img"] = arr[0]+"128.180"+  arr[1];
         for(let index in data.photos){

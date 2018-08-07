@@ -61,7 +61,7 @@ export default class Position extends Component {
   selectItem(url,item){
     let data = Taro.getStorageSync("cities");
     data.geoCity = item;
-    // Taro.setStorageSync("cities",data);
+    Taro.removeStorageSync('cities');
     console.log("data is",data);
     Taro.setStorage({ key: 'cities', data: data }).then(res=>{
       console.log("success",Taro.getStorageSync('cities'));
