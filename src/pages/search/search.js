@@ -53,6 +53,21 @@ export default class Search extends Component {
       keyWord:''
     });
   }
+  navigateToURL(url,item){
+    let cityId = Taro.getStorageSync('cities').geoCity.id;
+    url = url+`?title=${item.nm}&id=${item.id}&cityId=${cityId}`
+    Taro.navigateTo({
+      url:url
+    });
+  }
+  navigateToCinema(url,item){
+    console.log(item);
+    let cinemaId = item.id;
+    url = url+`?cinemaId=${cinemaId}`
+    Taro.navigateTo({
+      url:url
+    });
+  }
   render () {
     let movies = this.state.movieList;
     let cinemas = this.state.cinemasList;
@@ -76,7 +91,7 @@ export default class Search extends Component {
             <View className="title">电影/电视剧/综艺</View>
             {movies.map((item,index)=>{
               return (
-                <View className="dataItem" key={index}>
+                <View className="dataItem" key={index} onClick={this.navigateToURL.bind(this,'../detail/detail',item)}>
                   <View className="leftItem">
                     <Image src={item.img}></Image>
                   </View>
@@ -102,7 +117,7 @@ export default class Search extends Component {
             {
               cinemas.map((item,index)=>{
                 return (
-                  <View className="cinemasItem" key={item.id}>
+                  <View className="cinemasItem" key={item.id} onClick={this.navigateToCinema.bind(this,'../cinemaDetail/cinemaDetail',item)}>
                     <View className="leftCinemas">
                       <View className="cinemaName">{item.nm}<Text className="price">{item.sellPrice}</Text><Text className="smallText">元起</Text></View>
                       <View className="cinemaAddr">{item.addr}</View>
