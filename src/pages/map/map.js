@@ -48,7 +48,7 @@ export default class Map extends Component {
     const mapData = this.state.mapData;
     const covers = this.state.covers;
     return (
-     <Map onCLick={this.onTap.bind(this)} longitude={mapData.lng} latitude={mapData.lat} covers={covers} className="map" hidden={this.state.coverShow?false:true}/>
+     <Map onCLick={this.onTap.bind(this)} scale="14" longitude={mapData.lng} latitude={mapData.lat} covers={covers} className="map" hidden={this.state.coverShow?false:true}/>
     )
   }
 }

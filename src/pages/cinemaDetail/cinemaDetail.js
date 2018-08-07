@@ -77,8 +77,17 @@ export default class CinemasDetail extends Component {
     });
   }
   navigateToMap(url,cinemaData){
-    console.log(url);
     url = url+`?lng=${cinemaData.lng}&lat=${cinemaData.lat}&title=${cinemaData.nm}`;
+    Taro.navigateTo({
+      url:url
+    })
+  }
+  navigateSeat(url,item){
+    const seqNo = item.seqNo;
+    const reqList = this.state.reqList;
+    const cityId = Taro.getStorageSync('cities').geoCity.id;
+    console.log("reqList is",reqList);
+    url = url+`?cityId=${cityId}&seqNo=${seqNo}&ci=${cityId}`;
     Taro.navigateTo({
       url:url
     })
@@ -93,7 +102,8 @@ export default class CinemasDetail extends Component {
     let dateLists = showData;
     let tabIndex = this.state.tabIndex;
     let dealList = this.state.movieData? this.state.movieData.dealList:{};
-    console.log("dealList is",dealList);
+    let reqList = this.state.reqList;
+    console.log("reqList ",reqList)
     return(
       <View className="cinemaDetail">
         <View className="header">
@@ -159,7 +169,7 @@ export default class CinemasDetail extends Component {
                       <View className="price"><Text className="mark">￥{item.vipPrice}</Text> {item.vipPriceName}</View>
                       <View className="discount">{item.extraDesc}</View>
                   </View>
-                  <View className="button">
+                  <View className="button" onClick={this.navigateSeat.bind(this,'../seat/seat',item)}>
                     购票
                   </View>
                 </View>
