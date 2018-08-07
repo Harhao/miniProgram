@@ -42,6 +42,9 @@ export default class Position extends Component {
     this.getData();
   }
   getData(){
+    Taro.showLoading({
+      title:'加载中'
+    });
     let data = Taro.getStorageSync("cities");
     Taro.setNavigationBarTitle({
       title:"当前城市 -"+data.geoCity.nm
@@ -51,13 +54,20 @@ export default class Position extends Component {
         geoCity:data.geoCity,
         letterMap:data.letterMap
       }
+    },()=>{
+      Taro.hideLoading();
     });
   }
-  selectItem(item){
+  selectItem(url,item){
     let data = Taro.getStorageSync("cities");
     data.geoCity = item;
-    Taro.setStorageSync("cities",data);
-    Taro.navigateBack({ delta: 1 });
+    // Taro.setStorageSync("cities",data);
+    console.log("data is",data);
+    Taro.setStorage({ key: 'cities', data: data }).then(res=>{
+      console.log("success",Taro.getStorageSync('cities'));
+      Taro.reLaunch({url:url});
+    })
+
   }
   setView(item){
     let id = item.id;
@@ -107,7 +117,7 @@ export default class Position extends Component {
                             {
                               letterMap[key].map(item=>{
                                 return (
-                                  <View className="headItem" key={item.id} onClick={this.selectItem.bind(this,item)}>
+                                  <View className="headItem" key={item.id} onClick={this.selectItem.bind(this,'../movies/movies',item)}>
                                     {item.nm}
                                   </View>
                                 )

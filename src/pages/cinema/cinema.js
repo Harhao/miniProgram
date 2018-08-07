@@ -48,6 +48,7 @@ export default class Cinema extends Component {
   getStorageData(){
     let self = this;
     let cityData = Taro.getStorageSync('cities');
+    console.log("cityData is",cityData);
     this.setState({
       cityData:cityData.geoCity
     },()=>{

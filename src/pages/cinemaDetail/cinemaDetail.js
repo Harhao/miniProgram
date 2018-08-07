@@ -32,11 +32,15 @@ export default class CinemasDetail extends Component {
         movieId:movieId
       }
     },()=>{
+      Taro.showLoading({
+        title:"加载数据中"
+      });
       Taro.request({
         url:`https://m.maoyan.com/ajax/cinemaDetail?cinemaId=${cinemaId}&movieId=${movieId}`,
         method:'GET'
       }).then(res=>{
         if(res.statusCode == 200){
+          Taro.hideLoading();
           res.data.showData.movies.map((item)=>{
             const arr = item["img"].split("w.h");
             item["img"] = arr[0]+'140.180'+arr[1];

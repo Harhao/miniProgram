@@ -36,10 +36,14 @@ export default class Content extends Component {
     this.getDetailData();
   }
   getDetailData(){
+    Taro.showLoading({
+      title:"加载中"
+    });
     Taro.request({
       url:`https://m.maoyan.com/ajax/detailmovie?movieId=${this.state.params.id}`
     }).then(res=>{
       if(res.statusCode == 200){
+        Taro.hideLoading();
         let data = res.data.detailMovie;
         console.log(data);
         let arr = data["img"].split("w.h");
@@ -147,6 +151,7 @@ export default class Content extends Component {
           </View>
           <View className="icon"></View>
         </View>
+        <View className="line"></View>
         <Video
             src={itemData.videourl}
             hidden={this.state.playHide}
