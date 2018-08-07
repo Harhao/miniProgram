@@ -36,7 +36,7 @@ export default class Map extends Component {
         latitude:lat,
         longitude:lng,
         title:title,
-
+        iconPath: '../../assets/images/location.png'
       }]
     });
   }
