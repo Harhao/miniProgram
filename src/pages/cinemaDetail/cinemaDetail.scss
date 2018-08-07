@@ -220,34 +220,47 @@
     background-color: #f0f0f0;
   }
   .things{
+    .title{
+      font-size: 0.7rem;
+      padding: 20px 15px;
+      border-bottom: 1px solid #f0f0f0;
+    }
     .item{
       display: flex;
       flex-direction: row;
       padding:20px 0px;
       Image,img{
-        width: 70Px;
-        height:70Px;
+        width: 75Px;
+        height:75Px;
         padding:15px;
       }
       .con{
         flex:1;
         margin:0 20px;
+        padding-top: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         .name{
           padding-top: 10px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
           .icon{
-            width: 15Px;
-            height: 15Px;
-            font-size: 0.65rem;
-            padding:10px;
+            width: 10Px;
+            height: 10Px;
+            font-size: 0.6rem;
+            padding:5px;
             color: #fff;
             border-radius: 8px;
             background-color: #f90;
           }
           .desc{
             display: inline-block;
-            font-size:0.75rem;
-            color: #333;
+            font-size:0.65rem;
+            color: #999;
             margin-left: 20px;
+            margin-top:20px;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
@@ -263,7 +276,7 @@
           flex-direction: row;
           justify-content: space-between;
           font-size: 0.7rem;
-          padding-top:5px;
+          padding-top:20px;
           .price{
             color: #f03d37;
             font-size:1rem;
@@ -272,6 +285,7 @@
             width:47Px;
             height: 30Px;
             line-height: 30Px;
+            font-size: 0.65rem;
             text-align: center;
             color: #fff;
             background-color: #f03d37;
