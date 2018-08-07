@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
+import iconPath from '../../assets/images/location.png'
 import './map.scss'
 export default class Map extends Component {
   constructor(props){
@@ -36,7 +37,7 @@ export default class Map extends Component {
         latitude:lat,
         longitude:lng,
         title:title,
-        iconPath: '../../assets/images/location.png'
+        iconPath: iconPath
       }]
     });
   }
