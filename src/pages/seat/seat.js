@@ -59,7 +59,7 @@ export default class Seat extends Component {
     const movie = this.state.seatData.movie;
     const seatInfo = this.state.seatData.seat?this.state.seatData.seat.sections[0]:[];
     const seats = seatInfo?seatInfo.seats:{};
-    const seatTypeList = this.state.seatData.seat.seatTypeList;
+    const seatTypeList = this.state.seatData.seat?this.state.seatData.seat.seatTypeList:[];
     return (
       <View className="selectSeat">
         <View className="header">
