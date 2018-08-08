@@ -13,7 +13,8 @@ class App extends Component {
       'pages/content/content',
       'pages/cinemaDetail/cinemaDetail',
       'pages/map/map',
-      'pages/seat/seat'
+      'pages/seat/seat',
+      'pages/user/user'
     ],
     window: {
       backgroundTextStyle: '#fff',
