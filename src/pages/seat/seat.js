@@ -35,7 +35,6 @@ export default class Seat extends Component {
     })
   }
   selectSeat(item,e){
-    console.log("e is",e);
     const self = this;
     const status = e.currentTarget.dataset.status;
     if(status == 0){
@@ -58,7 +57,7 @@ export default class Seat extends Component {
     const hall = this.state.seatData.hall;
     const movie = this.state.seatData.movie;
     const seatInfo = this.state.seatData.seat?this.state.seatData.seat.sections[0]:[];
-    const seats = seatInfo?seatInfo.seats:{};
+    const seats = this.state.seatData.seat?seatInfo.seats:{};
     const seatTypeList = this.state.seatData.seat?this.state.seatData.seat.seatTypeList:[];
     return (
       <View className="selectSeat">
