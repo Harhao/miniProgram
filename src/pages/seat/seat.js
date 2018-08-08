@@ -35,6 +35,7 @@ export default class Seat extends Component {
     })
   }
   selectSeat(item,e){
+    console.log("e is",e);
     const self = this;
     const status = e.currentTarget.dataset.status;
     if(status == 0){
@@ -57,8 +58,8 @@ export default class Seat extends Component {
     const hall = this.state.seatData.hall;
     const movie = this.state.seatData.movie;
     const seatInfo = this.state.seatData.seat?this.state.seatData.seat.sections[0]:[];
-    const active = this.state.active;
     const seats = seatInfo?seatInfo.seats:{};
+    const seatTypeList = this.state.seatData.seat.seatTypeList;
     return (
       <View className="selectSeat">
         <View className="header">
@@ -103,6 +104,29 @@ export default class Seat extends Component {
             </View>
             </View>
         </View>
+        <View className="type">
+          {
+            seatTypeList.map((item,index)=>{
+              return (
+                <View className="item" key={index}>
+                  <Image src={item.icon}></Image>
+                  <Text className="word">{item.name}</Text>
+                </View>
+              )
+            })
+          }
+        </View>
+        <View className="comment">
+          <View className="title">推荐</View>
+          <View className="btn">
+            <View className="btnItem">1人</View>
+            <View className="btnItem">2人</View>
+            <View className="btnItem">3人</View>
+            <View className="btnItem">4人</View>
+            <View className="btnItem">5人</View>
+          </View>
+        </View>
+        <View className="buyBtn">请先选座</View>
       </View>
     );
   }

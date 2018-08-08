@@ -248,7 +248,6 @@ export default class Detail extends Component {
   }
   navigateToCinema(url,item){
     url = url +`?cinemaId=${item.id}&movieId=${this.state.params.id}`;
-    console.log(url);
     Taro.navigateTo({ url: url })
   }
   render () {
