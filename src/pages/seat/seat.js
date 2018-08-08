@@ -19,6 +19,9 @@ export default class Seat extends Component {
   initParams(){
     const params = this.$router.params;
     const self = this;
+    Taro.showLoading({
+      title:"加载中..."
+    });
     Taro.request({
       url:`https://m.maoyan.com/ajax/seatingPlan?cityId=${params.cityId}&ci=${params.ci}&seqNo=${params.seqNo}`,
       method:'GET',
@@ -27,6 +30,7 @@ export default class Seat extends Component {
       }
     }).then(res=>{
       if(res.statusCode ==200){
+        Taro.hideLoading();
         const seatData = res.data.seatData;
         self.setState({
           seatData:seatData,
