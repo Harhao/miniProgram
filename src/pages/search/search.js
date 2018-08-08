@@ -4,7 +4,7 @@ import './search.scss'
 export default class Search extends Component {
   config = {
     navigationBarTitleText: '猫眼电影',
-      enablePullDownRefresh:false
+    enablePullDownRefresh:false
   }
   constructor(props){
     super(props);

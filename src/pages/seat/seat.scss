@@ -35,12 +35,12 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      height: 30Px;
+      height: 20Px;
       .hallName{
-        color: #333;
+        color: #777;
         width: 60%;
-        height: 30Px;
-        line-height: 30Px;
+        height: 20Px;
+        line-height: 20Px;
         text-align: center;
         font-size: 0.6rem;
         background-color: #e3e3e3;
@@ -52,7 +52,8 @@
       display: flex;
       flex-direction: row;
       width: 100%;
-      height: 60vh;
+      // height: 60vh;
+      height: auto;
       align-items: center;
       .rowList{
         width:10Px;
@@ -60,11 +61,42 @@
         font-size: 0.7rem;
         height: auto;
         background-color: #edecf0;
+        .numberId{
+          width:10Px;
+          height: 15Px;
+          margin: 5px 0px 7Px 0px;
+        }
       }
-      .seatWrap{
+      .Container{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
         flex: 1;
-        height: auto;
+        overflow: scroll;
+        .rowWrap{
+          display: flex;
+          flex-direction: row;
+          height:15Px;
+          line-height: 15Px;
+          margin:7px 0px;
+          .seatWrap{
+            width:18Px;
+            height:15Px;
+            line-height: 15Px;
+            margin: 0 5px;
+            Image,img{
+              width: 18Px;
+              height: 15Px;
+            }
+          }
+        }
       }
     }
   }
+}
+::-webkit-scrollbar {
+ width: 0;
+ height: 0;
+ color: transparent;
 }

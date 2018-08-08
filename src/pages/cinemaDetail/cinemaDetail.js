@@ -86,7 +86,6 @@ export default class CinemasDetail extends Component {
     const seqNo = item.seqNo;
     const reqList = this.state.reqList;
     const cityId = Taro.getStorageSync('cities').geoCity.id;
-    console.log("reqList is",reqList);
     url = url+`?cityId=${cityId}&seqNo=${seqNo}&ci=${cityId}`;
     Taro.navigateTo({
       url:url
@@ -103,7 +102,6 @@ export default class CinemasDetail extends Component {
     let tabIndex = this.state.tabIndex;
     let dealList = this.state.movieData? this.state.movieData.dealList:{};
     let reqList = this.state.reqList;
-    console.log("reqList ",reqList)
     return(
       <View className="cinemaDetail">
         <View className="header">
