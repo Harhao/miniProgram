@@ -6,4 +6,4 @@ before_install:
 install:
   - cnpm install
 script:
-  - npm run dev:weapp
+  - cnpm run dev:weapp
