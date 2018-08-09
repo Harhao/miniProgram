@@ -34,6 +34,7 @@ export default class Cinema extends Component {
     }
   }
   selectItem(item){
+    console.log("item is",item);
     if(this.state.type == item.type){
       this.setState({
         type:""
@@ -137,10 +138,10 @@ export default class Cinema extends Component {
             <Text>搜影院</Text>
           </View>
         </View>
-        <View className="toolBar">
+        <View className="ToolBar">
           {this.state.selectItems.map((item,index)=>{
             return (
-              <View className={this.state.type == item.type?'selectItem active':'selectItem'} key={index} onClick={this.selectItem.bind(this,item)}>
+              <View className={item.type == this.state.type?'selectItem actived':'selectItem'} key={index} onClick={this.selectItem.bind(this,item)}>
                 {item.nm}
                 <View className="tangle"></View>
               </View>
