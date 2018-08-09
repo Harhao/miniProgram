@@ -83,10 +83,11 @@ export default class CinemasDetail extends Component {
     })
   }
   navigateSeat(url,item){
+    const cinemaName = this.state.movieData.cinemaData.nm;
     const seqNo = item.seqNo;
     const reqList = this.state.reqList;
     const cityId = Taro.getStorageSync('cities').geoCity.id;
-    url = url+`?cityId=${cityId}&seqNo=${seqNo}&ci=${cityId}`;
+    url = url+`?cityId=${cityId}&seqNo=${seqNo}&ci=${cityId}&cinemaName=${cinemaName}`;
     Taro.navigateTo({
       url:url
     })

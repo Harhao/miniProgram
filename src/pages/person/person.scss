@@ -45,7 +45,7 @@
     height: 170Px;
     .login{
       background-color: #df2d2d;
-      margin:1rem 1rem;
+      margin:2.5rem 1rem 1rem 1rem;
       color: #fff;
     }
     Input{
@@ -61,7 +61,7 @@
     .phone{
       width: 100%;
       position: relative;
-      & Button{
+      &>Button{
         position: absolute;
         z-index:99;
         left:15rem;

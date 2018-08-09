@@ -19,6 +19,9 @@ export default class Seat extends Component {
   initParams(){
     const params = this.$router.params;
     const self = this;
+    Taro.setNavigationBarTitle({
+      title:params.cinemaName
+    })
     Taro.showLoading({
       title:"加载中..."
     });
@@ -34,6 +37,7 @@ export default class Seat extends Component {
         const seatData = res.data.seatData;
         self.setState({
           seatData:seatData,
+
         });
       }
     })

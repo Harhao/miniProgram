@@ -34,7 +34,6 @@ export default class Cinema extends Component {
     }
   }
   selectItem(item){
-    console.log("item is",item);
     if(this.state.type == item.type){
       this.setState({
         type:""
@@ -49,7 +48,6 @@ export default class Cinema extends Component {
   getStorageData(){
     let self = this;
     let cityData = Taro.getStorageSync('cities');
-    console.log("cityData is",cityData);
     this.setState({
       cityData:cityData.geoCity
     },()=>{
