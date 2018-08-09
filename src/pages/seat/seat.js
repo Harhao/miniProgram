@@ -59,21 +59,19 @@ export default class Seat extends Component {
       }
     })
   }
-  selectSeat(item,e){
-    console.log("e",e,item);
+  selectSeat(row,column,item){
     const self = this;
-    const status = e.currentTarget.dataset.status;
-    if(status == 0){
-      this.setState({
-        icon:self.state.statusMap[2],
-        active:2
-      });
+    const arr = this.state.seatArray;
+    if(item == 0){
+      arr[row][column]= '2';
     }else{
-      this.setState({
-        icon:self.state.statusMap[0],
-        active:0
-      });
+      arr[row][column]= '0';
     }
+    self.setState({
+      seatArray:arr
+    },()=>{
+      console.log(self.state.seatArray)
+    });
   }
   componentDidMount () {
     this.initParams();
@@ -118,7 +116,7 @@ export default class Seat extends Component {
                         seatArray[key].map((item,index)=>{
                           return (
                             <View className="seatWrap" key={index}>
-                              {item == '0'?<Image src={seatMap.can}></Image>:<Image src={seatMap.No}></Image>}
+                              {item == '0'?<Image src={seatMap.can} onClick={this.selectSeat.bind(this,key,index,item)}></Image>:(item == '2'?<Image src={seatMap.select}  onClick={this.selectSeat.bind(this,key,index,item)}></Image>:<Text></Text>)}
                             </View>
                           )
                         })
