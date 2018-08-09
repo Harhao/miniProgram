@@ -64,30 +64,51 @@ export default class Seat extends Component {
     const arr = this.state.seatArray;
     if(item == 0){
       arr[row][column]= '2';
-      if(self.state.buySeat.length == 4){
+      if(self.state.buySeat.length == 5){
         Taro.showToast({
-          title: '最多只能选择4个座位',
+          title: '最多选择5个座位',
           duration: 2000
         })
         return false;
       }else{
         self.setState({
           buySeat:self.state.buySeat.concat({
-            "row":row+1,
+            "row":row,
             "column":column
-          })
+          }),
+          seatArray:arr
         })
       }
     }else{
       arr[row][column]= '0';
       let  buySeat = self.state.buySeat;
-      self.setState({
-        buySeat:buySeat.splice(-1,1)
+      buyseat.map((value,index)=>{
+        if(value["row"]== row && value["column"]== column){
+          self.setState({
+            buySeat:buySeat.splice(index,1),
+            seatArray:arr
+          })
+        }
       })
     }
-    self.setState({
-      seatArray:arr
-    });
+  }
+  selectAll(seats){
+    const self = this;
+    seats.map(item=>{
+      const row = item.rowNum;
+      const column = item.columnId.split('0')[0];
+      const itemIndex = self.state.seatArray[row][column];
+      self.selectSeat(row,column,itemIndex);
+    })
+  }
+  recomment(recomment,num){
+    switch(num){
+      case '1':this.selectAll(recomment.bestOne.seats);break;
+      case '2':this.selectAll(recomment.bestTwo.seats);break;
+      case '3':this.selectAll(recomment.bestThree.seats);break;
+      case '4':this.selectAll(recomment.bestFour.seats);break;
+      case '5':this.selectAll(recomment.bestFive.seats);break;
+    }
   }
   componentDidMount () {
     this.initParams();
@@ -100,6 +121,7 @@ export default class Seat extends Component {
     const seatTypeList = this.state.seatData.seat?this.state.seatData.seat.seatTypeList:[];
     const seatMap = this.state.statusMap;
     const seatArray = this.state.seatArray;
+    const recomment = this.state.seatData.seat.bestRecommendation;
     return (
       <View className="selectSeat">
         <View className="header">
@@ -159,11 +181,11 @@ export default class Seat extends Component {
         <View className="comment">
           <View className="title">推荐</View>
           <View className="btn">
-            <View className="btnItem">1人</View>
-            <View className="btnItem">2人</View>
-            <View className="btnItem">3人</View>
-            <View className="btnItem">4人</View>
-            <View className="btnItem">5人</View>
+            <View className="btnItem" onClick={this.recomment.bind(this,recomment,1)}>1人</View>
+            <View className="btnItem" onClick={this.recomment.bind(this,recomment,2)}>2人</View>
+            <View className="btnItem" onClick={this.recomment.bind(this,recomment,3)}>3人</View>
+            <View className="btnItem" onClick={this.recomment.bind(this,recomment,4)}>4人</View>
+            <View className="btnItem" onClick={this.recomment.bind(this,recomment,5)}>5人</View>
           </View>
         </View>
         <View className="buyBtn">请先选座</View>
