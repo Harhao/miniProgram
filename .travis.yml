@@ -1,9 +1,7 @@
 language: node_js
 node_js:
   - "8.11.1"
-before_install:
-  - npm i -g cnpm
 install:
-  - cnpm install
+  - npm install
 script:
-  - cnpm run dev:weapp
+  - npm run dev:weapp
