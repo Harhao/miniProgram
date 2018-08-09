@@ -115,11 +115,11 @@ export default class Content extends Component {
             </View>
         </View>
         <View className="line"></View>
-        <View className="mediaContainer">
+        <View className="mediaContainer" hidden={photos.length == 0?true:false}>
             <View className="title">媒体库</View>
             <ScrollView scrollX style='height:80Px' className='media' scrollTop='0' lowerThreshold='10' className="mediaPhoto"
             >
-              <View className="videoCon" onClick={this.playVideo.bind(this,e)}>
+              <View className="videoCon" onClick={this.playVideo.bind(this,e)} hidden={itemData.videoImg?false:true}>
                 <Image src={itemData.videoImg}></Image>
                 <Image className="playIcon" src={playPng}></Image>
               </View>
@@ -150,7 +150,7 @@ export default class Content extends Component {
           <View className="content">
             <View className="text">
               <View className="movieText bold">电影原声</View>
-              <View className="movieText name">{itemData.musicName}</View>
+              <View className="movieText name">{itemData.musicName?itemData.musicName:'暂无主题音乐'}</View>
             </View>
           </View>
           <View className="icon"></View>

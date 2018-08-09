@@ -94,7 +94,7 @@ export default class Search extends Component {
             <View className="title">电影/电视剧/综艺</View>
             {movies.map((item,index)=>{
               return (
-                <View className="dataItem" key={index} onClick={this.navigateToURL.bind(this,'../detail/detail',item)}>
+                <View className="dataItem" key={index} onClick={this.navigateToURL.bind(this,'../content/content',item)}>
                   <View className="leftItem">
                     <Image src={item.img}></Image>
                   </View>

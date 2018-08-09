@@ -35,7 +35,52 @@ export default class Position extends Component {
         { name: "X", id: "X" },
         { name: "Y", id: "Y" },
         { name: "Z", id: "Z" }
-      ]
+      ],
+      hotCity:[{
+        id:1,
+        nm:'北京',
+        py:'beijing'
+      },{
+        id:10,
+        nm:'上海',
+        py:'shanghai'
+      },{
+        id:20,
+        nm:'广州',
+        py:'guangzhou'
+      },{
+        id:30,
+        nm:'深圳',
+        py:'shenzhen'
+      },{
+        id:57,
+        nm:'武汉',
+        py:'wuhan'
+      },{
+        id:40,
+        nm:'天津',
+        py:'tianjin'
+      },{
+        id:42,
+        nm:'西安',
+        py:'xian'
+      },{
+        id:55,
+        nm:'南京',
+        py:'nanjing'
+      },{
+        id:50,
+        nm:'杭州',
+        py:'hangzhou'
+      },{
+        id:59,
+        nm:'成都',
+        py:'chengdu'
+      },{
+        id:45,
+        nm:'重庆',
+        py:'chongqing'
+      }]
     }
   }
   componentDidMount () {
@@ -76,7 +121,8 @@ export default class Position extends Component {
     });
   }
   render () {
-    let letterMap = this.state.cityData.letterMap?this.state.cityData.letterMap:{};
+    const letterMap = this.state.cityData.letterMap?this.state.cityData.letterMap:{};
+    const hotCity = this.state.hotCity;
     return (
       <View>
           <ScrollView className='cityList'
@@ -94,17 +140,11 @@ export default class Position extends Component {
                   <View className="hotContainer" id="hot">
                     <View className="hotCity">热门城市</View>
                     <View className="hotList">
-                      <View className="hotItem">上海</View>
-                      <View className="hotItem">北京</View>
-                      <View className="hotItem">广州</View>
-                      <View className="hotItem">深圳</View>
-                      <View className="hotItem">武汉</View>
-                      <View className="hotItem">天津</View>
-                      <View className="hotItem">西安</View>
-                      <View className="hotItem">南京</View>
-                      <View className="hotItem">杭州</View>
-                      <View className="hotItem">成都</View>
-                      <View className="hotItem">重庆</View>
+                      {hotCity.map((item,index)=>{
+                        return (
+                          <View className="hotItem" key={item.id} onClick={this.selectItem.bind(this,'../movies/movies',item)}>{item.nm}</View>
+                        )
+                      })}
                     </View>
                   </View>
                     {
