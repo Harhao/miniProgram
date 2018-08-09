@@ -110,6 +110,12 @@ export default class Seat extends Component {
       case '5':this.selectAll(recomment.bestFive.seats);break;
     }
   }
+  deleteBuy(item){
+    const row = item.row;
+    const column = item.column;
+    const status = this.state.seatArray[row][column];
+    this.selectSeat(row,clolumn,status);
+  }
   componentDidMount () {
     this.initParams();
   }
@@ -122,6 +128,7 @@ export default class Seat extends Component {
     const seatMap = this.state.statusMap;
     const seatArray = this.state.seatArray;
     const recomment = this.state.seatData.seat.bestRecommendation;
+    const price = this.state.seatData.price.seatsPriceDetail[0].originPrice;
     return (
       <View className="selectSeat">
         <View className="header">
@@ -180,15 +187,27 @@ export default class Seat extends Component {
         </View>
         <View className="comment">
           <View className="title">推荐</View>
-          <View className="btn">
+          <View className="btn" hidden={this.state.buySeat.length?true:false}>
             <View className="btnItem" onClick={this.recomment.bind(this,recomment,1)}>1人</View>
             <View className="btnItem" onClick={this.recomment.bind(this,recomment,2)}>2人</View>
             <View className="btnItem" onClick={this.recomment.bind(this,recomment,3)}>3人</View>
             <View className="btnItem" onClick={this.recomment.bind(this,recomment,4)}>4人</View>
             <View className="btnItem" onClick={this.recomment.bind(this,recomment,5)}>5人</View>
           </View>
+          <View className="btn" hidden={this.state.buySeat.length?false:true}>
+            {
+              this.state.buySeat.map((item,index)=>{
+                return (
+                  <View className="btnItem" key={index} onClick={this.deleteBuy.bind(this,item)}>
+                    {item.row+1}排{item.column}座
+                  </View>
+                )
+              })
+            }
+          </View>
         </View>
-        <View className="buyBtn">请先选座</View>
+        <View className="buyBtn" hidden={this.state.buySeat.length?true:false}>请先选座</View>
+        <View className="buyBtn" hidden={this.state.buySeat.length?false:true}>{this.state.buySeat.length*price}确认选座</View>
       </View>
     );
   }
