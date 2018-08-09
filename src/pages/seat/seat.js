@@ -12,7 +12,7 @@ export default class Seat extends Component {
       seatData:[],
       statusMap:["https://p1.meituan.net/movie/9dfff6fd525a7119d44e5734ab0e9fb41244.png","https://p1.meituan.net/movie/bdb0531259ae1188b9398520f9692cbd1249.png","https://p0.meituan.net/movie/585588bd86828ed54eed828dcb89bfdd1401.png"],
       icon:'https://p1.meituan.net/movie/9dfff6fd525a7119d44e5734ab0e9fb41244.png',
-      active:'0'
+      active:'0',
     }
 
   }
@@ -90,7 +90,7 @@ export default class Seat extends Component {
                 })
               }
             </View>
-            <View className="Container" >
+            <View className="Container">
             {
               Object.keys(seats).map(key=>{
                 return (
