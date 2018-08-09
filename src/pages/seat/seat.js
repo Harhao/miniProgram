@@ -16,7 +16,8 @@ export default class Seat extends Component {
         select:"https://p0.meituan.net/movie/585588bd86828ed54eed828dcb89bfdd1401.png"
       },
       active:'0',
-      seatArray:[]
+      seatArray:[],
+      buySeat:[]
     }
 
   }
@@ -55,7 +56,6 @@ export default class Seat extends Component {
           seatData:seatData,
           seatArray:seatArray
         });
-        console.log(seatArray);
       }
     })
   }
@@ -64,13 +64,29 @@ export default class Seat extends Component {
     const arr = this.state.seatArray;
     if(item == 0){
       arr[row][column]= '2';
+      if(self.state.buySeat.length == 4){
+        Taro.showToast({
+          title: '最多只能选择4个座位',
+          duration: 2000
+        })
+        return false;
+      }else{
+        self.setState({
+          buySeat:self.state.buySeat.concat({
+            "row":row+1,
+            "column":column
+          })
+        })
+      }
     }else{
       arr[row][column]= '0';
+      let  buySeat = self.state.buySeat;
+      self.setState({
+        buySeat:buySeat.splice(-1,1)
+      })
     }
     self.setState({
       seatArray:arr
-    },()=>{
-      console.log(self.state.seatArray)
     });
   }
   componentDidMount () {
