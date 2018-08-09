@@ -10,9 +10,13 @@ export default class Seat extends Component {
     super(props);
     this.state = {
       seatData:[],
-      statusMap:["https://p1.meituan.net/movie/9dfff6fd525a7119d44e5734ab0e9fb41244.png","https://p1.meituan.net/movie/bdb0531259ae1188b9398520f9692cbd1249.png","https://p0.meituan.net/movie/585588bd86828ed54eed828dcb89bfdd1401.png"],
-      icon:'https://p1.meituan.net/movie/9dfff6fd525a7119d44e5734ab0e9fb41244.png',
+      statusMap:{
+        can:"https://p1.meituan.net/movie/9dfff6fd525a7119d44e5734ab0e9fb41244.png",
+        No:"https://p1.meituan.net/movie/bdb0531259ae1188b9398520f9692cbd1249.png",
+        select:"https://p0.meituan.net/movie/585588bd86828ed54eed828dcb89bfdd1401.png"
+      },
       active:'0',
+      seatArray:[]
     }
 
   }
@@ -35,10 +39,23 @@ export default class Seat extends Component {
       if(res.statusCode ==200){
         Taro.hideLoading();
         const seatData = res.data.seatData;
+        const seatArray = [];
+        seatData.seat.sections[0].seats.map(item=>{
+          let  arr = [];
+          item["columns"].map(seat=>{
+            if(seat["st"] == "N"){
+              arr.push('0');
+            }else{
+              arr.push('E')
+            }
+          })
+          seatArray.push(arr);
+        })
         self.setState({
           seatData:seatData,
-
+          seatArray:seatArray
         });
+        console.log(seatArray);
       }
     })
   }
@@ -66,8 +83,9 @@ export default class Seat extends Component {
     const hall = this.state.seatData.hall;
     const movie = this.state.seatData.movie;
     const seatInfo = this.state.seatData.seat?this.state.seatData.seat.sections[0]:[];
-    const seats = this.state.seatData.seat?seatInfo.seats:{};
     const seatTypeList = this.state.seatData.seat?this.state.seatData.seat.seatTypeList:[];
+    const seatMap = this.state.statusMap;
+    const seatArray = this.state.seatArray;
     return (
       <View className="selectSeat">
         <View className="header">
@@ -92,23 +110,23 @@ export default class Seat extends Component {
               }
             </View>
             <View className="Container">
-            {
-              Object.keys(seats).map(key=>{
-                return (
-                  <View className="rowWrap" key={key}>
-                    {
-                      seats[key].columns.map((item,index)=>{
-                        return (
-                          <View className="seatWrap" key={index}>
-                            {item.st == 'E'? <Text></Text>:<Image src={this.state.icon} data-status={this.state.active} data-column={item.columnId} data-row={key*1+1} onClick={this.selectSeat.bind(this,item,e)}></Image>}
-                          </View>
-                        )
-                      })
-                    }
-                  </View>
-                )
-              })
-            }
+              {
+                Object.keys(seatArray).map(key=>{
+                  return (
+                    <View className="rowWrap" key={key}>
+                      {
+                        seatArray[key].map((item,index)=>{
+                          return (
+                            <View className="seatWrap" key={index}>
+                              {item == '0'?<Image src={seatMap.can}></Image>:<Image src={seatMap.No}></Image>}
+                            </View>
+                          )
+                        })
+                      }
+                    </View>
+                  )
+                })
+              }
             </View>
             </View>
         </View>
