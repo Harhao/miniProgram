@@ -43,6 +43,7 @@ export default class Seat extends Component {
     })
   }
   selectSeat(item,e){
+    console.log("e",e,item);
     const self = this;
     const status = e.currentTarget.dataset.status;
     if(status == 0){
@@ -99,7 +100,7 @@ export default class Seat extends Component {
                       seats[key].columns.map((item,index)=>{
                         return (
                           <View className="seatWrap" key={index}>
-                            {item.st == 'E'? <Text></Text>:<Image src={this.state.icon} data-status={this.state.active} onClick={this.selectSeat.bind(this,item,e)}></Image>}
+                            {item.st == 'E'? <Text></Text>:<Image src={this.state.icon} data-status={this.state.active} data-column={item.columnId} data-row={key*1+1} onClick={this.selectSeat.bind(this,item,e)}></Image>}
                           </View>
                         )
                       })

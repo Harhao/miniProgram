@@ -53,7 +53,7 @@
       display: flex;
       flex-direction: row;
       width: 100%;
-      min-height: 60vh;
+      min-height: 50vh;
       align-items: center;
       .rowList{
         width:10Px;
@@ -157,12 +157,12 @@
   }
   .buyBtn{
     width: 95%;
-    height: 30Px;
-    margin: 20px auto;
+    height: 40Px;
+    margin: 40px auto;
     font-size: 0.75rem;
     border-radius: 10px;
     text-align: center;
-    line-height: 30Px;
+    line-height: 40Px;
     background-color: #ffddb2;
     color: #fff;
   }
