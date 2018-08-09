@@ -68,6 +68,8 @@
         bottom:0.4rem;
         width: 4rem;
         height: 60px;
+        line-height: 60px;
+        font-size: 0.65rem;
         padding:0;
       }
     }
@@ -77,10 +79,10 @@
     height: 4rem;
     .operate{
       display: flex;
-      height: 85px;
+      height: 90px;
       justify-content: space-between;
-      padding: 0.2rem 0.5rem;
-      margin:0 0.5rem;
+      padding: 0.2rem 0.8rem;
+      margin:0 0.7rem;
       .register,.findPass{
         color: #df2d2d;
         font-size: 0.7rem;

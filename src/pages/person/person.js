@@ -27,6 +27,11 @@ export default class Person extends Component {
   formReset = e => {
     console.log(e)
   }
+  login(url){
+    Taro.navigateTo({
+      url:url
+    })
+  }
   render () {
     return (
       <View className='person'>
@@ -44,7 +49,7 @@ export default class Person extends Component {
             <Label className="">
               <Input type="password" placeholder="请输入您的密码"></Input>
             </Label>
-            <Button className="login" size="default">登陆</Button>
+            <Button className="login" size="default" onClick={this.login.bind(this,'../user/user')}>登陆</Button>
         </Form>
         <Form onSubmit="formSubmit" onReset="formReset" className="mobile" hidden={this.state.currentTab == 1?false:true}>
             <Label className='phone' for="phone">
@@ -54,7 +59,7 @@ export default class Person extends Component {
             <Label className="mobileMail" for="mobileMail">
               <Input type="password" placeholder="请输入短信验证码" id="mobileMail"></Input>
             </Label>
-            <Button  className="login" size="default">登陆</Button>
+            <Button  className="login" size="default" onClick={this.login.bind(this,'../user/user')}>登陆</Button>
         </Form>
         <View className="copyright">
             <View className="operate">

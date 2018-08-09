@@ -10,6 +10,7 @@ import './user.scss'
 export default class User extends Component {
   config = {
     navigationBarTitleText: '我的',
+    enablePullDownRefresh:false
   }
   constructor(props){
     super(props);
@@ -23,7 +24,7 @@ export default class User extends Component {
           <View className="avatar">
             <Image src={avatarPng}></Image>
           </View>
-          <View className="name"></View>
+          <View className="name">长明灯与奇异果</View>
         </View>
         <View className="order">
           <View className="myOrder">
