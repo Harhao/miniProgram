@@ -10,9 +10,7 @@ export default class Map extends Component {
         lng:'',
         lat:'',
       },
-      markers:[],
-      covers: [],
-      coverShow:false
+      markers:null,
     }
   }
   onTap(){
@@ -32,12 +30,17 @@ export default class Map extends Component {
         lng:lng,
         lat:lat
       },
-      coverShow:true,
-      covers: [{
+       markers:[{
         latitude:lat,
         longitude:lng,
-        title:title,
-        iconPath: iconPath
+        iconPath: iconPath,
+        callout:{
+          content:title,
+          color:'#333',
+          fontSize:16,
+          bgColor:'#fff',
+          textAlign:'center'
+        }
       }]
     });
   }
@@ -46,9 +49,9 @@ export default class Map extends Component {
   }
   render () {
     const mapData = this.state.mapData;
-    const covers = this.state.covers;
+    const markers = this.state.markers?this.state.markers:[];
     return (
-     <Map onCLick={this.onTap.bind(this)} scale="14" longitude={mapData.lng} latitude={mapData.lat} covers={covers} className="map" hidden={this.state.coverShow?false:true}/>
+     <Map onCLick={this.onTap.bind(this)} scale="14" longitude={mapData.lng} latitude={mapData.lat} markers={markers} className="map" />
     )
   }
 }
