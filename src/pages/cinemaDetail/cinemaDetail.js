@@ -176,7 +176,7 @@ export default class CinemasDetail extends Component {
           }
         </View>
         <View className="line"></View>
-        <View className="things">
+        <View className="things" hidden={dealList.dealList.length == 0?true:false}>
           <View className="title">影院超值套餐</View>
           <View className="list">
             {

@@ -73,6 +73,11 @@ export default class Content extends Component {
       playHide:!self.state.playHide
     });
   }
+  navigateToDetail(){
+    Taro.reLaunch({
+      url:'../person/person'
+    });
+  }
   render () {
     let itemData = this.state.detailMovie;
     let photos = itemData.photos;
@@ -101,7 +106,7 @@ export default class Content extends Component {
           </View>
         </View>
         <View className="introduce">
-            <View className="btn">特惠购票</View>
+            <View className="btn" onClick={this.navigateToDetail.bind(this)}>特惠购票</View>
             <View className={this.state.showContent?'introduceContent showContent':'introduceContent'}>
               {itemData.dra}
             </View>

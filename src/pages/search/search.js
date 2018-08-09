@@ -52,6 +52,9 @@ export default class Search extends Component {
     this.setState({
       keyWord:''
     });
+    Taro.navigateBack({
+      delta:1
+    })
   }
   navigateToURL(url,item){
     let cityId = Taro.getStorageSync('cities').geoCity.id;

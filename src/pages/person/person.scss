@@ -13,7 +13,7 @@
       text-align: center;
       color: #333;
       font-weight: 700;
-      font-size: 0.65rem;
+      font-size: 0.8rem;
       border-bottom:5px solid #f8f8f8;
     }
     .active{
@@ -36,7 +36,7 @@
     }
     .login{
       background-color: #df2d2d;
-      margin:1rem 1rem;
+      margin:2.5rem 1rem 1rem 1rem;
       color: #fff;
     }
   }
@@ -80,9 +80,10 @@
     .operate{
       display: flex;
       height: 90px;
+      line-height: 90px;
       justify-content: space-between;
       padding: 0.2rem 0.8rem;
-      margin:0 0.7rem;
+      margin:0.5rem 0.7rem;
       .register,.findPass{
         color: #df2d2d;
         font-size: 0.7rem;
