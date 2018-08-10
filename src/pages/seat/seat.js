@@ -60,7 +60,6 @@ export default class Seat extends Component {
     })
   }
   selectSeat(row,column,item){
-    console.log("row ,column",row,column,item);
     const self = this;
     const arr = this.state.seatArray;
     if(item == 0){
@@ -80,8 +79,6 @@ export default class Seat extends Component {
         self.setState({
           buySeat:buySeat,
           seatArray:arr
-        },()=>{
-          console.log("buySeat",self.state.buySeat);
         })
       }
     }else{
@@ -141,7 +138,7 @@ export default class Seat extends Component {
     const seatMap = this.state.statusMap;
     const seatArray = this.state.seatArray;
     const recomment = this.state.seatData.seat?this.state.seatData.seat.bestRecommendation:[];
-    const price = this.state.seatData.price.seatsPriceDetail?this.state.seatData.price.seatsPriceDetail[1].originPrice:[];
+    const price = this.state.seatData.price?this.state.seatData.price.seatsPriceDetail[1].originPrice:[];
     return (
       <View className="selectSeat">
         <View className="header">
