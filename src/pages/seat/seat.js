@@ -215,7 +215,7 @@ export default class Seat extends Component {
           </View>
         </View>
         <View className={this.state.buySeat.length == 0?'buyBtn':'hide buyBtn'}>请先选座</View>
-        <View className={this.state.buySeat.length == 0?'hide buyBtn':'buyBtn'}>￥{this.state.buySeat.length*price}确认选座</View>
+        <View className={this.state.buySeat.length == 0?'hide buyBtn':'buyBtn active'}>￥{this.state.buySeat.length*price}确认选座</View>
       </View>
     );
   }
