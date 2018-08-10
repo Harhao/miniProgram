@@ -1,15 +1,15 @@
 ### 基于京东凹凸实验室Taro框架的微信小程序--猫眼电影
 [![Build Status](https://travis-ci.com/Harhao/miniProgram.svg?branch=master)](https://travis-ci.com/Harhao/miniProgram)
 
--  开发环境
+-  一、开发环境
   ```
     系统：Window 10
     Taro版本：v0.0.69
     Node版本：v8.11.1
   ```
-- 现阶段运行效果
+- 二、现阶段运行效果
 - ![猫眼电影运行效果](https://github.com/Harhao/miniProgram/blob/master/demo1.gif?raw=true)
-- 安装依赖并运行小程序
+- 三、安装依赖并运行小程序
     - 1.安装依赖:尽量使用cnpm安装项目依赖，npm安装比较慢，而且容易出现安装失败情况
     ```
      cnpm install
@@ -53,4 +53,4 @@
     ```
     module "npm/@tarojs/taro-weapp/index.js" is not defined  // 把dist/npm/@tarojs拷贝一次重新黏贴一下就可以避免这种情况
     ```
-> 基于Tarov0.0.69版本的微信小程序猫眼电影已完成基本的全部的功能,项目中获取定位信息和城市信息的接口是个人在新浪云的接口，不是官方的数据接口。可以直接通过代码中的api.zip包来进行中间代理。接下来会进行持续的优化和更新
+> 结束:基于Tarov0.0.69版本的微信小程序猫眼电影已完成基本的全部的功能,项目中获取定位信息和城市信息的接口是个人在新浪云的接口，不是官方的数据接口。可以直接通过代码中的api.zip包来进行中间代理。接下来会进行持续的优化和更新
