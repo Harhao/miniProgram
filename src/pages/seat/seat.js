@@ -63,7 +63,7 @@ export default class Seat extends Component {
     const self = this;
     const arr = this.state.seatArray;
     if(item == 0){
-      if(self.state.buySeat.length > 4){
+      if(self.state.buySeat.length ==4){
         Taro.showToast({
           title: '最多选择4个座位',
           duration: 2000
@@ -78,29 +78,34 @@ export default class Seat extends Component {
             "column":column
           }),
           seatArray:arr
+        },()=>{
+          console.log("buySeat1 is",this.state.buySeat);
         })
       }
     }else{
       arr[row][column]= '0';
-      const  buySeat = self.state.buySeat;
-      let tmpArr = self.state.buySeat;
+      const  buySeat = this.state.buySeat;
+      let tmpArr = this.state.buySeat;
       buySeat.map((value,index)=>{
         if(value["row"]== row && value["column"]== column){
           tmpArr.splice(index,1);
           self.setState({
             buySeat:tmpArr,
             seatArray:arr
+          },()=>{
+            console.log("buySeat2 is",self.state.buySeat);
           })
         }
       })
     }
-    console.log("seat",this.state.buySeat);
+
   }
   selectAll(seats){
+    console.log("seats",seats);
     const self = this;
     seats.map(item=>{
-      const row = item.rowNum;
-      const column = item.columnId.split('0')[0];
+      const row = parseInt(item.rowNum);
+      const column = parseInt(item.columnId.split('0')[0]);
       const itemIndex = self.state.seatArray[row][column];
       self.selectSeat(row,column,itemIndex);
     })
@@ -114,7 +119,6 @@ export default class Seat extends Component {
     }
   }
   deleteBuy(item){
-    console.log("item is",item);
     const row = item.row;
     const column = item.column;
     const status = this.state.seatArray[row][column];
@@ -192,26 +196,26 @@ export default class Seat extends Component {
         </View>
         <View className="comment">
           <View className="title">推荐</View>
-          <View className="btn" hidden={this.state.buySeat.length?true:false}>
+          <View className="btn" className={this.state.buySeat.length == 0?'btn':'hide btn'}>
             <View className="btnItem" onClick={this.getRecomment.bind(this,recomment,1)}>1人</View>
             <View className="btnItem" onClick={this.getRecomment.bind(this,recomment,2)}>2人</View>
             <View className="btnItem" onClick={this.getRecomment.bind(this,recomment,3)}>3人</View>
             <View className="btnItem" onClick={this.getRecomment.bind(this,recomment,4)}>4人</View>
           </View>
-          <View className="btn" hidden={this.state.buySeat.length?false:true}>
+          <View className={this.state.buySeat.length == 0?'btn hide':'btn'}>
             {
               this.state.buySeat.map((item,index)=>{
                 return (
                   <View className="btnItem" key={index} onClick={this.deleteBuy.bind(this,item)}>
-                    {item.row+1}排{item.column}座
+                    {(item.row)*1+1}排{item.column}座
                   </View>
                 )
               })
             }
           </View>
         </View>
-        <View className="buyBtn" hidden={this.state.buySeat.length?true:false}>请先选座</View>
-        <View className="buyBtn" hidden={this.state.buySeat.length?false:true}>￥{this.state.buySeat.length*price}确认选座</View>
+        <View className={this.state.buySeat.length == 0?'buyBtn':'hide buyBtn'}>请先选座</View>
+        <View className={this.state.buySeat.length == 0?'hide buyBtn':'buyBtn'}>￥{this.state.buySeat.length*price}确认选座</View>
       </View>
     );
   }
