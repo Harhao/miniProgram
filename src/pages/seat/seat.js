@@ -73,11 +73,12 @@ export default class Seat extends Component {
       }else{
         let  buySeat = self.state.buySeat;
         arr[row][column]= '2';
+        buySeat.push({
+          "row":row,
+          "column":column
+        });
         self.setState({
-          buySeat:buySeat.concat({
-            "row":row,
-            "column":column
-          }),
+          buySeat:buySeat,
           seatArray:arr
         },()=>{
           console.log("buySeat",self.state.buySeat);
