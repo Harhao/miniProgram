@@ -79,6 +79,8 @@ export default class Seat extends Component {
             "column":column
           }),
           seatArray:arr
+        },()=>{
+          console.log("buySeat",self.state.buySeat);
         })
       }
     }else{
