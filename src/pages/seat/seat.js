@@ -63,15 +63,15 @@ export default class Seat extends Component {
     const self = this;
     const arr = this.state.seatArray;
     if(item == 0){
-      arr[row][column]= '2';
-      if(self.state.buySeat.length == 5){
+      if(self.state.buySeat.length > 4){
         Taro.showToast({
-          title: '最多选择5个座位',
+          title: '最多选择4个座位',
           duration: 2000
         })
         return false;
       }else{
         let  buySeat = self.state.buySeat;
+        arr[row][column]= '2';
         self.setState({
           buySeat:buySeat.concat({
             "row":row,
@@ -94,6 +94,7 @@ export default class Seat extends Component {
         }
       })
     }
+    console.log("seat",this.state.buySeat);
   }
   selectAll(seats){
     const self = this;
@@ -104,13 +105,12 @@ export default class Seat extends Component {
       self.selectSeat(row,column,itemIndex);
     })
   }
-  recomment(recomment,num){
+  getRecomment(recomment,num){
     switch(num){
-      case '1':this.selectAll(recomment.bestOne.seats);break;
-      case '2':this.selectAll(recomment.bestTwo.seats);break;
-      case '3':this.selectAll(recomment.bestThree.seats);break;
-      case '4':this.selectAll(recomment.bestFour.seats);break;
-      case '5':this.selectAll(recomment.bestFive.seats);break;
+      case 1:this.selectAll(recomment.bestOne.seats);break;
+      case 2:this.selectAll(recomment.bestTwo.seats);break;
+      case 3:this.selectAll(recomment.bestThree.seats);break;
+      case 4:this.selectAll(recomment.bestFour.seats);break;
     }
   }
   deleteBuy(item){
@@ -193,11 +193,10 @@ export default class Seat extends Component {
         <View className="comment">
           <View className="title">推荐</View>
           <View className="btn" hidden={this.state.buySeat.length?true:false}>
-            <View className="btnItem" onClick={this.recomment.bind(this,recomment,1)}>1人</View>
-            <View className="btnItem" onClick={this.recomment.bind(this,recomment,2)}>2人</View>
-            <View className="btnItem" onClick={this.recomment.bind(this,recomment,3)}>3人</View>
-            <View className="btnItem" onClick={this.recomment.bind(this,recomment,4)}>4人</View>
-            <View className="btnItem" onClick={this.recomment.bind(this,recomment,5)}>5人</View>
+            <View className="btnItem" onClick={this.getRecomment.bind(this,recomment,1)}>1人</View>
+            <View className="btnItem" onClick={this.getRecomment.bind(this,recomment,2)}>2人</View>
+            <View className="btnItem" onClick={this.getRecomment.bind(this,recomment,3)}>3人</View>
+            <View className="btnItem" onClick={this.getRecomment.bind(this,recomment,4)}>4人</View>
           </View>
           <View className="btn" hidden={this.state.buySeat.length?false:true}>
             {
