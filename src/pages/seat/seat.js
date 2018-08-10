@@ -82,12 +82,13 @@ export default class Seat extends Component {
       }
     }else{
       arr[row][column]= '0';
-      let  buySeat = self.state.buySeat;
+      const  buySeat = self.state.buySeat;
+      let tmpArr = self.state.buySeat;
       buySeat.map((value,index)=>{
         if(value["row"]== row && value["column"]== column){
-          console.log("buySeat is",buySeat);
+          tmpArr.splice(index,1);
           self.setState({
-            buySeat:buySeat,
+            buySeat:tmpArr,
             seatArray:arr
           })
         }
@@ -113,10 +114,11 @@ export default class Seat extends Component {
     }
   }
   deleteBuy(item){
+    console.log("item is",item);
     const row = item.row;
     const column = item.column;
     const status = this.state.seatArray[row][column];
-    this.selectSeat(row,clolumn,status);
+    this.selectSeat(row,column,status);
   }
   componentDidMount () {
     this.initParams();
