@@ -53,4 +53,4 @@
     ```
     module "npm/@tarojs/taro-weapp/index.js" is not defined  // 把dist/npm/@tarojs拷贝一次重新黏贴一下就可以避免这种情况
     ```
-> 猫眼电影微信小程序待优化更新
+> 猫眼电影微信小程序持续更新优化

@@ -60,33 +60,72 @@ export default class Seat extends Component {
     })
   }
   selectSeat(row,column,item){
+    console.log("row ,column",row,column,item);
     const self = this;
     const arr = this.state.seatArray;
     if(item == 0){
-      arr[row][column]= '2';
-      if(self.state.buySeat.length == 4){
+      if(self.state.buySeat.length ==4){
         Taro.showToast({
-          title: '最多只能选择4个座位',
+          title: '最多选择4个座位',
           duration: 2000
         })
         return false;
       }else{
+        let  buySeat = self.state.buySeat;
+        arr[row][column]= '2';
         self.setState({
-          buySeat:self.state.buySeat.concat({
-            "row":row+1,
+          buySeat:buySeat.concat({
+            "row":row,
             "column":column
-          })
+          }),
+          seatArray:arr
+        },()=>{
+          console.log("buySeat",self.state.buySeat);
         })
       }
     }else{
       arr[row][column]= '0';
-      let  buySeat = self.state.buySeat;
-      self.setState({
-        buySeat:buySeat.splice(-1,1)
+      const  buySeat = this.state.buySeat;
+      let tmpArr = this.state.buySeat;
+      buySeat.map((value,index)=>{
+        if(value["row"]== row && value["column"]== column){
+          tmpArr.splice(index,1);
+          self.setState({
+            buySeat:tmpArr,
+            seatArray:arr
+          })
+        }
       })
     }
-    self.setState({
-      seatArray:arr
+
+  }
+  selectAll(seats){
+    const self = this;
+    seats.map(item=>{
+      let row = parseInt(item.rowId.split('0')[0]);
+      let column = parseInt(item.columnId.split('0')[0]);
+      let itemIndex = self.state.seatArray[row][column];
+      self.selectSeat(row,column,itemIndex);
+    })
+
+  }
+  getRecomment(recomment,num){
+    switch(num){
+      case 1:this.selectAll(recomment.bestOne.seats);break;
+      case 2:this.selectAll(recomment.bestTwo.seats);break;
+      case 3:this.selectAll(recomment.bestThree.seats);break;
+      case 4:this.selectAll(recomment.bestFour.seats);break;
+    }
+  }
+  deleteBuy(item){
+    const row = item.row;
+    const column = item.column;
+    const status = this.state.seatArray[row][column];
+    this.selectSeat(row,column,status);
+  }
+  navigate(url){
+    Taro.navigateTo({
+      url:url
     });
   }
   componentDidMount () {
@@ -100,6 +139,8 @@ export default class Seat extends Component {
     const seatTypeList = this.state.seatData.seat?this.state.seatData.seat.seatTypeList:[];
     const seatMap = this.state.statusMap;
     const seatArray = this.state.seatArray;
+    const recomment = this.state.seatData.seat?this.state.seatData.seat.bestRecommendation:[];
+    const price = this.state.seatData.price.seatsPriceDetail?this.state.seatData.price.seatsPriceDetail[1].originPrice:[];
     return (
       <View className="selectSeat">
         <View className="header">
@@ -158,15 +199,26 @@ export default class Seat extends Component {
         </View>
         <View className="comment">
           <View className="title">推荐</View>
-          <View className="btn">
-            <View className="btnItem">1人</View>
-            <View className="btnItem">2人</View>
-            <View className="btnItem">3人</View>
-            <View className="btnItem">4人</View>
-            <View className="btnItem">5人</View>
+          <View className="btn" className={this.state.buySeat.length == 0?'btn':'hide btn'}>
+            <View className="btnItem" onClick={this.getRecomment.bind(this,recomment,1)}>1人</View>
+            <View className="btnItem" onClick={this.getRecomment.bind(this,recomment,2)}>2人</View>
+            <View className="btnItem" onClick={this.getRecomment.bind(this,recomment,3)}>3人</View>
+            <View className="btnItem" onClick={this.getRecomment.bind(this,recomment,4)}>4人</View>
+          </View>
+          <View className={this.state.buySeat.length == 0?'btn hide':'btn'}>
+            {
+              this.state.buySeat.map((item,index)=>{
+                return (
+                  <View className="btnItem" key={index} onClick={this.deleteBuy.bind(this,item)}>
+                    {(item.row)*1+1}排{item.column}座
+                  </View>
+                )
+              })
+            }
           </View>
         </View>
-        <View className="buyBtn">请先选座</View>
+        <View className={this.state.buySeat.length == 0?'buyBtn':'hide buyBtn'}>请先选座</View>
+        <View className={this.state.buySeat.length == 0?'hide buyBtn':'buyBtn active'} onClick={this.navigate.bind(this,'../order/order')}>￥{this.state.buySeat.length*price} 确认选座</View>
       </View>
     );
   }

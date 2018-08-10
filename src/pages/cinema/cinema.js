@@ -72,7 +72,7 @@ export default class Cinema extends Component {
     let year = date.getFullYear();
     let month = date.getMonth()+1;
     month = month >=10?'-'+month:'-0'+month;
-    let day = date.getDate() >=10?'-'+datae.getDate():'-0'+date.getDate();
+    let day = date.getDate() >=10?'-'+date.getDate():'-0'+date.getDate();
     return year+month+day;
   }
   getCinemasList(){

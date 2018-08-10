@@ -140,7 +140,6 @@
       height: auto;
       display: flex;
       flex-direction: row;
-      justify-content: center;
       align-items: center;
       .btnItem{
         width: 15%;
@@ -150,7 +149,7 @@
         text-align: center;
         line-height: 30Px;
         border:2px solid #d7d7d7;
-        margin:0 2%;
+        margin:0 3%;
         border-radius: 10px;
       }
     }
@@ -166,6 +165,12 @@
     background-color: #ffddb2;
     color: #fff;
   }
+}
+.hide{
+  display: none !important;
+}
+.active{
+  background-color:#f90 !important;
 }
 ::-webkit-scrollbar {
  width: 0;
