@@ -71,8 +71,9 @@ export default class Seat extends Component {
         })
         return false;
       }else{
+        let  buySeat = self.state.buySeat;
         self.setState({
-          buySeat:self.state.buySeat.concat({
+          buySeat:buySeat.concat({
             "row":row,
             "column":column
           }),
@@ -82,10 +83,11 @@ export default class Seat extends Component {
     }else{
       arr[row][column]= '0';
       let  buySeat = self.state.buySeat;
-      buyseat.map((value,index)=>{
+      buySeat.map((value,index)=>{
         if(value["row"]== row && value["column"]== column){
+          console.log("buySeat is",buySeat);
           self.setState({
-            buySeat:buySeat.splice(index,1),
+            buySeat:buySeat,
             seatArray:arr
           })
         }
@@ -127,8 +129,9 @@ export default class Seat extends Component {
     const seatTypeList = this.state.seatData.seat?this.state.seatData.seat.seatTypeList:[];
     const seatMap = this.state.statusMap;
     const seatArray = this.state.seatArray;
-    const recomment = this.state.seatData.seat.bestRecommendation;
-    const price = this.state.seatData.price.seatsPriceDetail[0].originPrice;
+    const recomment = this.state.seatData.seat?this.state.seatData.seat.bestRecommendation:[];
+    // const price = this.state.seatData.price.seatsPriceDetail[0].originPrice;
+    const price = 40;
     return (
       <View className="selectSeat">
         <View className="header">
@@ -207,7 +210,7 @@ export default class Seat extends Component {
           </View>
         </View>
         <View className="buyBtn" hidden={this.state.buySeat.length?true:false}>请先选座</View>
-        <View className="buyBtn" hidden={this.state.buySeat.length?false:true}>{this.state.buySeat.length*price}确认选座</View>
+        <View className="buyBtn" hidden={this.state.buySeat.length?false:true}>￥{this.state.buySeat.length*price}确认选座</View>
       </View>
     );
   }
