@@ -8,7 +8,9 @@ export default class Map extends Component {
   constructor(props){
     super(props);
     this.state = {}
-
+  }
+  config = {
+    navigationBarTitleText: '确认订单'
   }
 
   componentDidMount () {
@@ -16,7 +18,7 @@ export default class Map extends Component {
   render () {
     return (
       <View className="order">
-
+        order
       </View>
     )
   }

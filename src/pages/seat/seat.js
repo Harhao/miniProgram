@@ -60,6 +60,7 @@ export default class Seat extends Component {
     })
   }
   selectSeat(row,column,item){
+    console.log("row ,column",row,column,item);
     const self = this;
     const arr = this.state.seatArray;
     if(item == 0){
@@ -78,8 +79,6 @@ export default class Seat extends Component {
             "column":column
           }),
           seatArray:arr
-        },()=>{
-          console.log("buySeat1 is",this.state.buySeat);
         })
       }
     }else{
@@ -92,8 +91,6 @@ export default class Seat extends Component {
           self.setState({
             buySeat:tmpArr,
             seatArray:arr
-          },()=>{
-            console.log("buySeat2 is",self.state.buySeat);
           })
         }
       })
@@ -101,14 +98,14 @@ export default class Seat extends Component {
 
   }
   selectAll(seats){
-    console.log("seats",seats);
     const self = this;
     seats.map(item=>{
-      const row = parseInt(item.rowNum);
-      const column = parseInt(item.columnId.split('0')[0]);
-      const itemIndex = self.state.seatArray[row][column];
+      let row = parseInt(item.rowId.split('0')[0]);
+      let column = parseInt(item.columnId.split('0')[0]);
+      let itemIndex = self.state.seatArray[row][column];
       self.selectSeat(row,column,itemIndex);
     })
+
   }
   getRecomment(recomment,num){
     switch(num){
@@ -124,6 +121,11 @@ export default class Seat extends Component {
     const status = this.state.seatArray[row][column];
     this.selectSeat(row,column,status);
   }
+  navigate(url){
+    Taro.navigateTo({
+      url:url
+    });
+  }
   componentDidMount () {
     this.initParams();
   }
@@ -136,8 +138,7 @@ export default class Seat extends Component {
     const seatMap = this.state.statusMap;
     const seatArray = this.state.seatArray;
     const recomment = this.state.seatData.seat?this.state.seatData.seat.bestRecommendation:[];
-    const price = this.state.seatData.price.seatsPriceDetail[1].originPrice;
-    // const price = 40;
+    const price = this.state.seatData.price.seatsPriceDetail?this.state.seatData.price.seatsPriceDetail[1].originPrice:[];
     return (
       <View className="selectSeat">
         <View className="header">
@@ -215,7 +216,7 @@ export default class Seat extends Component {
           </View>
         </View>
         <View className={this.state.buySeat.length == 0?'buyBtn':'hide buyBtn'}>请先选座</View>
-        <View className={this.state.buySeat.length == 0?'hide buyBtn':'buyBtn active'}>￥{this.state.buySeat.length*price} 确认选座</View>
+        <View className={this.state.buySeat.length == 0?'hide buyBtn':'buyBtn active'} onClick={this.navigate.bind(this,'../order/order')}>￥{this.state.buySeat.length*price} 确认选座</View>
       </View>
     );
   }
