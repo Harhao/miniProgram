@@ -18,7 +18,10 @@ export default class Map extends Component {
   render () {
     return (
       <View className="order">
-        order
+        <View className="timeDown">
+          支付剩余时间:
+          <View className="restTime">14:00</View>
+        </View>
       </View>
     )
   }
