@@ -5,6 +5,6 @@ node_js:
 before_install:
   - npm config set registry https://registry.npm.taobao.org 
 install:
-  - npm install
+  - true
 script:
-  - npm run dev:weapp
+  - true
