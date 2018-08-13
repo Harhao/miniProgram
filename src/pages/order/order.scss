@@ -62,4 +62,40 @@
       height: 20px;
       background-color: #f0f0f0;
   }
+  .afford{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100Px;
+    line-height: 100Px;
+    background-color: #fff;
+    border-top:1px solid #f0f0f0;
+    padding:25px;
+    margin-bottom: 15Px;
+    .tickerInfo{
+      width: 100%;
+      height: 40Px;
+      line-height: 40Px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      color: #999;
+      font-size:0.8rem;
+      .moneyAll{
+        font-size:1rem;
+        color: #ef4238;
+        font-weight: 700;
+      }
+    }
+    .affordBtn{
+      width: 100%;
+      height: 40Px;
+      line-height: 40Px;
+      background-color: #ff9e05;
+      color: #fff;
+      text-align: center;
+      border-radius: 10px;
+    }
+  }
 }

@@ -50,6 +50,13 @@ export default class Map extends Component {
           </View>
         </View>
         <View className="line"></View>
+        <View className="afford">
+          <View className="tickerInfo">
+            <View className="info">不支持退票、改签</View>
+            <View className="moneyAll">￥41.9</View>
+          </View>
+          <View className="affordBtn">确认支付</View>
+        </View>
       </View>
     )
   }
