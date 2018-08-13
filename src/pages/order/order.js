@@ -13,6 +13,11 @@ export default class Map extends Component {
   config = {
     navigationBarTitleText: '确认订单'
   }
+  navigateToUser(url){
+    Taro.navigateTo({
+      url:url
+    })
+  }
   componentDidMount () {
   }
   render () {
@@ -55,7 +60,7 @@ export default class Map extends Component {
             <View className="info">不支持退票、改签</View>
             <View className="moneyAll">￥41.9</View>
           </View>
-          <View className="affordBtn">确认支付</View>
+          <View className="affordBtn" onClick={this.navigateToUser.bind(this,'../user/user')}>确认支付</View>
         </View>
       </View>
     )
