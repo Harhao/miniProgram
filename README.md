@@ -1,4 +1,4 @@
-### 基于京东凹凸实验室Taro框架的微信小程序--猫眼电影
+### 基于京东凹凸实验室(aotu.io)Taro框架的微信小程序--猫眼电影
 [![Build Status](https://travis-ci.com/Harhao/miniProgram.svg?branch=master)](https://travis-ci.com/Harhao/miniProgram)
 
 -  一、开发环境
