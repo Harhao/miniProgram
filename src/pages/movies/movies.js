@@ -32,7 +32,7 @@ export default class Movies extends Component {
   // }
   getCities(){
     Taro.request({
-      url:"https://www.easy-mock.com/mock/5ba0a7f92e49497b37162e32/example_copy/cities",
+      url:"https://www.easy-mock.com/mock/5ba0a7f92e49497b37162e32/example_copy/cities_copy_1541385673090",
       method:"GET",
       header:{
         "Accept": "application/json, */*",

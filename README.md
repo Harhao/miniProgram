@@ -53,7 +53,8 @@
     ```
     module "npm/@tarojs/taro-weapp/index.js" is not defined  // 把dist/npm/@tarojs拷贝一次重新黏贴一下就可以避免这种情况
     ```
-> 结束:基于Taro v0.0.69版本的微信小程序猫眼电影已完成基本的全部的功能,项目中获取定位信息和城市信息的接口是个人在新浪云的接口，不是官方的数据接口。可以直接通过代码中的api.zip包来进行中间代理，接下来会进行持续的优化和更新,下面待续会使用Taro构建H5和RN版本客户端
+> 猫眼电影官方获取电影院位置信息接口出现变动，现获取位置信息接口不能获取数据，待更新中
+
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
