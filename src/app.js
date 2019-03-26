@@ -18,17 +18,17 @@ class App extends Component {
       'pages/order/order'
     ],
     window: {
-      backgroundTextStyle: '#fff',
+      backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#e54847',
       navigationBarTitleText: '猫眼电影',
-      navigationBarTextStyle: '#fff',
+      navigationBarTextStyle: 'white',
       enablePullDownRefresh:true,
     },
     tabBar:{
       color:"#333",
       selectedColor:"#f03d37",
       backgroundColor: '#fff',
-      borderStyle: '#ddd',
+      borderStyle: 'black',
       list:[{
         pagePath:"pages/movies/movies",
         text:"电影",
