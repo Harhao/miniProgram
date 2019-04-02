@@ -53,7 +53,6 @@
     ```
     module "npm/@tarojs/taro-weapp/index.js" is not defined  // 把dist/npm/@tarojs拷贝一次重新黏贴一下就可以避免这种情况
     ```
-> 猫眼电影官方获取电影院位置信息接口出现变动，现获取位置信息接口不能获取数据，待更新中
 
 
 ## License
