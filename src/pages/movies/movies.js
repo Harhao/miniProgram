@@ -24,7 +24,6 @@ export default class Movies extends Component {
     }).then(res => {
       if (res.statusCode == 200) {
         let data = res.data.data.data.data;
-        console.log("****", res.data.data.data.data);
         Taro.setStorageSync("cities", data);
       }
     });
