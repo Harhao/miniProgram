@@ -54,6 +54,6 @@
     module "npm/@tarojs/taro-weapp/index.js" is not defined  // 把dist/npm/@tarojs拷贝一次重新黏贴一下就可以避免这种情况
     ```
 
-
+> taro版本现在已经是1.3，即将运用正式版本改写猫眼电影微信小程序
 ## License
 [MIT](http://opensource.org/licenses/MIT)
