@@ -6,3 +6,5 @@ install:
   - npm install
 script:
   - npm run dev:weapp
+after_success:
+  - exit 0
