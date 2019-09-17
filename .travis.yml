@@ -5,6 +5,4 @@ node_js:
 install:
   - npm install
 script:
-  - npm run dev:weapp
-after_success:
-  - exit 0
+  - npm run build:weapp
