@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View,Image,Text} from '@tarojs/components'
-import './CinemaDetail.scss'
+import './cinemaDetail.scss'
 import posPng from "../../assets/images/pos.png"
 export default class CinemasDetail extends Component {
   config={
