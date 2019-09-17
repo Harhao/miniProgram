@@ -1,6 +1,6 @@
 ### 基于京东凹凸实验室(aotu.io)Taro框架的微信小程序--猫眼电影
 [![Build Status](https://travis-ci.com/Harhao/miniProgram.svg?branch=master)](https://travis-ci.com/Harhao/miniProgram)
-
+[![](https://img.shields.io/badge/version-v1.0.0-brightgreen)](https://img.shields.io/badge/version-v1.0.0-brightgreen)
 -  一、开发环境
   ```
     操作系统：Window 10
