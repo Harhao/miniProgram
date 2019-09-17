@@ -2,15 +2,15 @@
 [![Build Status](https://travis-ci.com/Harhao/miniProgram.svg?branch=master)](https://travis-ci.com/Harhao/miniProgram)
 [![](https://img.shields.io/badge/version-v1.0.0-brightgreen)](https://img.shields.io/badge/version-v1.0.0-brightgreen)
 [![](https://img.shields.io/badge/License-MIT-brightgreen)](https://img.shields.io/badge/License-MIT-brightgreen)
-## 一、开发环境
+### 一、开发环境
   ```
     操作系统：Window 10
     Taro版本：v0.0.69
     Node版本：v8.11.1
   ```
-## 二、现阶段运行效果
+### 二、现阶段运行效果
 - ![猫眼电影运行效果](https://github.com/Harhao/miniProgram/blob/master/demo1.gif?raw=true)![猫眼电影运行效果](https://github.com/Harhao/miniProgram/blob/master/demo2.gif?raw=true)
-## 三、安装依赖并运行小程序
+### 三、安装依赖并运行小程序
   - 1.安装依赖:尽量使用cnpm安装项目依赖，npm安装比较慢，而且容易出现安装失败情况
     ```bash
      cnpm install
